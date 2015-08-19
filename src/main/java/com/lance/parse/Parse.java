@@ -11,8 +11,12 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
 public class Parse 
 {
+  private        Map<String,Object> spoloInfo;    //页面信息总对象
   private        Map<String, String> projectInfo;
   private        Document            doc;
   private        List<Elements>      listBudgets;
@@ -25,9 +29,11 @@ public class Parse
 	  GetBudgets();
   }
   
-  public Map<String,String> GetInfo()
+  public Map<String,String> GetProInfo()
   {
-	 
+	  //分区名
+	  String sectionName=doc.select("section[id=spolo-proInfo]").last().select("h3[class=spolo-title]").last().text();
+	  System.out.println(sectionName);
       Elements str1=doc.getElementsByClass("col-md-6");
       for(Element str : str1)
       {
@@ -37,11 +43,16 @@ public class Parse
       	
       	for(int i=0;i<nodes1.size();i++)
       	{
-      		projectInfo.put(nodes1.get(i).text(), nodes2.get(i).text());
-      		System.out.println(nodes1.get(i).text());
-      		System.out.println(nodes2.get(i).text());
+      		//去掉冒号
+      		projectInfo.put(nodes1.get(i).text().substring(0, nodes1.get(i).text().length()-1), nodes2.get(i).text());
+      		
       	}
+      	
       }
+      
+        this.spoloInfo.put(sectionName, this.projectInfo);
+        JSONArray array=JSONArray.fromObject(this.spoloInfo);
+		System.out.println(array.toString());
       	return this.projectInfo;
   }
   
