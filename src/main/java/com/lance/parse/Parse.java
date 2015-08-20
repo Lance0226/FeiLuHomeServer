@@ -16,14 +16,16 @@ import net.sf.json.JSONObject;
 
 public class Parse 
 {
-  private        Map<String,Object> spoloInfo;    //页面信息总对象
   private        Map<String, String> projectInfo;
+  private        Map<String,Map<String,String>> spoloInfo;
   private        Document            doc;
   private        List<Elements>      listBudgets;
 	
   public Parse(String strURL) throws IOException
   {
+	  
 	  this.projectInfo=new HashMap<String, String>();
+	  this.spoloInfo=new HashMap<String,Map<String,String>>();
 	  doc=Jsoup.connect(strURL).timeout(100000).get();  //设置10秒超时
 	  this.listBudgets=new LinkedList<Elements>();
 	  GetBudgets();
@@ -49,10 +51,10 @@ public class Parse
       	}
       	
       }
-      
+     
         this.spoloInfo.put(sectionName, this.projectInfo);
-        JSONArray array=JSONArray.fromObject(this.spoloInfo);
-		System.out.println(array.toString());
+        JSONObject spolo_json=JSONObject.fromObject(this.spoloInfo);
+		System.out.println(spolo_json.toString());
       	return this.projectInfo;
   }
   
