@@ -17,7 +17,6 @@ import net.sf.json.JSONObject;
 public class Parse 
 {
   private        Map<String, String> projectInfo;
-  private        Map<String,Map<String,String>> spoloInfo;
   private        Document            doc;
   private        List<Elements>      listBudgets;
 	
@@ -25,7 +24,6 @@ public class Parse
   {
 	  
 	  this.projectInfo=new HashMap<String, String>();
-	  this.spoloInfo=new HashMap<String,Map<String,String>>();
 	  doc=Jsoup.connect(strURL).timeout(100000).get();  //设置10秒超时
 	  this.listBudgets=new LinkedList<Elements>();
 	  GetBudgets();
@@ -34,8 +32,7 @@ public class Parse
   public Map<String,String> GetProInfo()
   {
 	  //分区名
-	  String sectionName=doc.select("section[id=spolo-proInfo]").last().select("h3[class=spolo-title]").last().text();
-	  System.out.println(sectionName);
+	  //String sectionName=doc.select("section[id=spolo-proInfo]").last().select("h3[class=spolo-title]").last().text();
       Elements str1=doc.getElementsByClass("col-md-6");
       for(Element str : str1)
       {
@@ -46,14 +43,13 @@ public class Parse
       	for(int i=0;i<nodes1.size();i++)
       	{
       		//去掉冒号
-      		projectInfo.put(nodes1.get(i).text().substring(0, nodes1.get(i).text().length()-1), nodes2.get(i).text());
+      		this.projectInfo.put(nodes1.get(i).text().substring(0, nodes1.get(i).text().length()-1), nodes2.get(i).text());
       		
       	}
       	
       }
      
-        this.spoloInfo.put(sectionName, this.projectInfo);
-        JSONObject spolo_json=JSONObject.fromObject(this.spoloInfo);
+        JSONObject spolo_json=JSONObject.fromObject(this.projectInfo);
 		System.out.println(spolo_json.toString());
       	return this.projectInfo;
   }
