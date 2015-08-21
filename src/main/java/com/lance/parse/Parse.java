@@ -16,17 +16,22 @@ import net.sf.json.JSONObject;
 
 public class Parse 
 {
-  private        Map<String, String> projectInfo;
-  private        Document            doc;
-  private        List<Elements>      listBudgets;
+  private              Map<String, String> projectInfo;
+  private              Document            doc;
+  private              List<Elements>      listBudgets;
+  private              JSONObject          spoloJson;
+  
+  private static final String              urlPrefix="http://www.xuanran001.com";
 	
   public Parse(String strURL) throws IOException
   {
 	  
 	  this.projectInfo=new HashMap<String, String>();
+	  
 	  doc=Jsoup.connect(strURL).timeout(100000).get();  //设置10秒超时
 	  this.listBudgets=new LinkedList<Elements>();
-	  GetBudgets();
+	  
+	  //GetBudgets();
   }
   
   public Map<String,String> GetProInfo()
@@ -49,33 +54,44 @@ public class Parse
       	
       }
      
-        JSONObject spolo_json=JSONObject.fromObject(this.projectInfo);
-		System.out.println(spolo_json.toString());
+        this.spoloJson=JSONObject.fromObject(this.projectInfo);
+		System.out.println(this.spoloJson.toString());
       	return this.projectInfo;
   }
   
   public void GetImg()
   {
 	  Elements imgs=doc.select("img[src~=(?i)\\.(png|jpe?g|gif)]");
+	  int i=0;
 	  for (Element image : imgs) 
 	  {
-
+          
 		  if(image.attr("src").contains("preview"))
 		  {
-		  System.out.println("http://www.xuanran001.com" + image.attr("src")+"\n");
+		  i++;
+		  String image_url=this.urlPrefix+image.attr("src");
+		  this.projectInfo.put("preview"+i,image_url);
 		  }
 
 	  }
 	  
+	  
+	  int t=0;
 	  for (Element image : imgs) 
 	  {
-
+         
 		  if(image.attr("src").contains("renderinfo"))
 		  {
-		  System.out.println("http://www.xuanran001.com" + image.attr("src")+"\n");
+			t++;
+		    //System.out.println("http://www.xuanran001.com" + image.attr("src")+"\n");
+		    String render_info_url=this.urlPrefix+image.attr("src");
+		    this.projectInfo.put("renderinfo"+t, render_info_url);
 		  }
 
 	  }
+	  
+	  this.spoloJson=JSONObject.fromObject(this.projectInfo);
+	  System.out.println(this.spoloJson.toString());
 	  
   }
   
