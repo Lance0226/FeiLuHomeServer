@@ -1,0 +1,4 @@
+com/lance/app/App.class
+com/lance/scrapy/Scrapy.class
+com/lance/parse/Parse.class
+com/lance/server/Server.class
