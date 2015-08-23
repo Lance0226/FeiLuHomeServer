@@ -5,6 +5,7 @@ import com.lance.scrapy.*;
 import com.lance.server.*;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +22,7 @@ public class App
 
 	//private static Map<String, String> info;
 
-	public static void main( String[] args ) throws IOException
+	public static void main( String[] args ) throws IOException, SQLException
     {
 		//Parse parse=new Parse("http://www.xuanran001.com/rwrule/zxfazzjfb3/409a55a7-86ae-4db4-99f8-fdbe94f30bef.html");
 		//parse.GetImg();
@@ -35,6 +36,7 @@ public class App
 		//scrapy.Parse();
 		
 		Server server=new Server();
+		server.insert();
 		
         
     }
