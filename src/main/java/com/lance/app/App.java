@@ -1,5 +1,6 @@
 package com.lance.app;
 
+import com.lance.Json.JsonUtil;
 import com.lance.parse.*;
 import com.lance.scrapy.*;
 import com.lance.server.*;
@@ -36,8 +37,9 @@ public class App
 		//scrapy.Parse();
 		
 		Server server=new Server();
-		server.insert();
-		
+		PlanList planlist=server.query(1);
+		System.out.println(planlist.url);
+		String strPlanlist=JsonUtil.PlanListToJson(planlist);
         
     }
 }

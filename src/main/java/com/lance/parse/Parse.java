@@ -11,7 +11,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 public class Parse 
