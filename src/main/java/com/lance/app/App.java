@@ -1,7 +1,7 @@
 package com.lance.app;
 
-import com.lance.Json.JsonUtil;
 import com.lance.io.io;
+import com.lance.json.*;
 import com.lance.parse.*;
 import com.lance.scrapy.*;
 import com.lance.server.*;
@@ -40,7 +40,15 @@ public class App
 		
 		Server server=new Server();
 		List<PlanList> arrayPlanList=server.query();
-		String strPlanlist=JsonUtil.PlanListToJson(arrayPlanList);
-        io.writeToFile("demo", "json","/usr/local/Cellar/tomcat/8.0.23/libexec/webapps/ROOT",strPlanlist);
+		String strNamePlanlist=JsonUtil.PlanListToJson(arrayPlanList,PlanListType.NAME);
+		String strPreviewURLPlanlist=JsonUtil.PlanListToJson(arrayPlanList,PlanListType.PREVIEW_URL);
+		String strDetailURLPlanlist=JsonUtil.PlanListToJson(arrayPlanList,PlanListType.DETAIL_URL);
+		
+		
+        io.writeToFile("plan_name", "json","/usr/local/Cellar/tomcat/8.0.23/libexec/webapps/ROOT",strNamePlanlist);
+        io.writeToFile("plan_preview_url", "json","/usr/local/Cellar/tomcat/8.0.23/libexec/webapps/ROOT",strPreviewURLPlanlist);
+        io.writeToFile("plan_detail_url", "json","/usr/local/Cellar/tomcat/8.0.23/libexec/webapps/ROOT",strDetailURLPlanlist);
+        
+        
     }
 }

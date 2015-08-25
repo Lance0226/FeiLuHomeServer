@@ -27,7 +27,7 @@ public class Server
 	  }
   }
   
-  public void insert(String url) throws SQLException
+  public void insert(String preview_url,String detail_url) throws SQLException
   {
 	  Statement stmt;
 	  ResultSet res;
@@ -42,7 +42,9 @@ public class Server
 	  {
 		  id=0;
 	  }
-	  stmt.executeUpdate("INSERT INTO spolo_plan_list(id,name,url) VALUES('"+id+"','方案','"+url+"')");
+	  String sql="INSERT INTO spolo_plan_list(id,name,preview_url,detail_url) VALUES('"+id+"','方案"+id+"','"+preview_url+"','"+detail_url+"');";
+	  System.out.println(sql);
+	  stmt.executeUpdate(sql);
 	  res=stmt.executeQuery("select LAST_INSERT_ID()");
 	  int ret_id;
 	  if(res.next())
@@ -61,18 +63,23 @@ public class Server
      res=stmt.executeQuery("select * from spolo_plan_list;");
      int      id=0;
      String name=null;
-     String url=null;
+     String preview_url=null;
+     String detail_url=null;
      List<PlanList> arrayPlanList=new ArrayList<PlanList>();
      while(res.next())
      {
     	 id=res.getInt("id");
     	 name=res.getString("name");
-    	 url=res.getString("url");
+    	 preview_url=res.getString("preview_url");
+    	 detail_url=res.getString("detail_url");
+    	 
 
      PlanList plan_list=new PlanList();
      plan_list.id=id;
      plan_list.name=name;
-     plan_list.url=url;
+     plan_list.preveiew_url=preview_url;
+     plan_list.detail_url=detail_url;
+     
      
      arrayPlanList.add(plan_list);
      
