@@ -1,6 +1,7 @@
 package com.lance.app;
 
 import com.lance.Json.JsonUtil;
+import com.lance.io.io;
 import com.lance.parse.*;
 import com.lance.scrapy.*;
 import com.lance.server.*;
@@ -8,6 +9,7 @@ import com.lance.server.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -37,9 +39,8 @@ public class App
 		//scrapy.Parse();
 		
 		Server server=new Server();
-		PlanList planlist=server.query(1);
-		System.out.println(planlist.url);
-		String strPlanlist=JsonUtil.PlanListToJson(planlist);
-        
+		List<PlanList> arrayPlanList=server.query();
+		String strPlanlist=JsonUtil.PlanListToJson(arrayPlanList);
+        io.writeToFile("demo", "json","/usr/local/Cellar/tomcat/8.0.23/libexec/webapps/ROOT",strPlanlist);
     }
 }
