@@ -18,7 +18,7 @@ public  class JsonUtil
 	   for(int i=0;i<arrayPlanList.size();i++)
 	   {
 	     
-	     mapPLanList.put(""+arrayPlanList.get(i).id, "{"+arrayPlanList.get(i).name+","+arrayPlanList.get(i).url+"}");
+	     mapPLanList.put(""+arrayPlanList.get(i).id,arrayPlanList.get(i).url);
 	     
 	   }
 	   jsonPlanList=JSONObject.fromObject(mapPLanList);
