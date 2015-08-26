@@ -1,5 +1,7 @@
 package com.lance.scrapy;
 
+import com.lance.parse.*;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -20,27 +22,28 @@ public class Scrapy
    private static final String urlPrefix="http://www.xuanran001.com";
    private static final String _urlPrefix="www.xuanran001.com";
    
-   private List<String> detail_urlList;
-   private List<String> preview_urlList;
+   private List<String> detail_urlList;    //详情url
+   private List<String> preview_urlList;   //预览图url
+   private List<String> pano_urlList;      //全景url
 	
    public Scrapy() throws IOException
    {
 	  this.doc=Jsoup.connect(this.urlPrefix+"/rwtarget/zhuangxiuapptubiao.html").timeout(50000).get();
 	  this.detail_urlList=new ArrayList<String>();
 	  this.preview_urlList=new ArrayList<String>();
+	  this.pano_urlList=new ArrayList<String>();
 	  
    }
    
-   public void Parse() throws SQLException
+   public void Parse() throws SQLException, IOException
    {
 	   Elements elms1=doc.select("a[class=project-meta]");
 
 	    for(Element elm1:elms1)
 	   {
 		   String strDetailURL=elm1.attr("href");
-		   this.detail_urlList.add(this.urlPrefix+strDetailURL);
-		   
-		   //System.out.println(this.urlPrefix+strDetailURL);
+		   this.detail_urlList.add(this.urlPrefix+turnDetailUrlToNormal(strDetailURL));
+		 
 	   }
 	    
 	   Elements elms2=doc.select("img[class=BWfade fadein]");
@@ -49,7 +52,6 @@ public class Scrapy
 	   {
 		   String strPreviewURL=elm2.attr("src");
 		   this.preview_urlList.add(this.urlPrefix+strPreviewURL);
-		   
 		   //System.out.println(this.urlPrefix+strPreviewURL);
 	   }
 	   
@@ -57,9 +59,21 @@ public class Scrapy
 	   {
 		   for(int i=0;i<this.detail_urlList.size();i++)
 		   {
+			   System.out.println(this.detail_urlList.get(i));
+			   Parse parse=new Parse(this.detail_urlList.get(i));
+			   this.pano_urlList.add(parse.getPano());
+			   
+			   
 			   Server server=new Server();
-			   server.insert(this.preview_urlList.get(i),this.detail_urlList.get(i));
+			   server.insertToPlanList(this.preview_urlList.get(i),this.detail_urlList.get(i),this.pano_urlList.get(i));
 		   }
 	   }
    }
+
+  private String turnDetailUrlToNormal(String detail_url)  //将跳转url转为直接跳转后，
+  {
+	String new_detail_url="/rwrule/zxfazzjfb3"+detail_url.substring(10,detail_url.length());
+	return new_detail_url;
+	
+  }
 }

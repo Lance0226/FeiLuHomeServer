@@ -94,10 +94,13 @@ public class Parse
 	  
   }
   
-  public void GetPano()
+  public String getPano()
   {
 	  Elements panos=doc.select("div[data-swf~=(?i)\\.(swf)]");
-	  System.out.println("http://www.xuanran001.com"+panos.last().attr("data-swf")+"\n");
+	  String pano_swf_url=panos.last().attr("data-swf");
+      String pano_html5_url=this.urlPrefix+turnSwfToHtmlURL(pano_swf_url);
+	  
+      return pano_html5_url; 
   }
   
   private void GetBudgets()
@@ -161,5 +164,11 @@ public class Parse
 	  }
 	  
 	  
+  }
+  
+  private String turnSwfToHtmlURL(String pano_swf_url)  //将swf的url转变为html5的
+  {
+	  String pano_html5_url=pano_swf_url.substring(0, pano_swf_url.length()-13)+"/html5/output/0000.html";
+	  return pano_html5_url;
   }
 }

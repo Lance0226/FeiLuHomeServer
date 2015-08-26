@@ -22,6 +22,7 @@ public  class JsonUtil
 		case NAME:        mapPLanList.put(""+arrayPlanList.get(i).id,arrayPlanList.get(i).name);         break;
 		case PREVIEW_URL: mapPLanList.put(""+arrayPlanList.get(i).id,arrayPlanList.get(i).preveiew_url); break;
 		case DETAIL_URL:  mapPLanList.put(""+arrayPlanList.get(i).id,arrayPlanList.get(i).detail_url);   break;
+		case PANO_URL:    mapPLanList.put(""+arrayPlanList.get(i).id,arrayPlanList.get(i).pano_url);     break;
 
 		default:          System.out.println("Enum type error");                                         break;
 		}

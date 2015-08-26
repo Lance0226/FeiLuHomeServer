@@ -27,7 +27,7 @@ public class Server
 	  }
   }
   
-  public void insert(String preview_url,String detail_url) throws SQLException
+  public void insertToPlanList(String preview_url,String detail_url,String pano_url) throws SQLException
   {
 	  Statement stmt;
 	  ResultSet res;
@@ -42,7 +42,7 @@ public class Server
 	  {
 		  id=0;
 	  }
-	  String sql="INSERT INTO spolo_plan_list(id,name,preview_url,detail_url) VALUES('"+id+"','方案"+id+"','"+preview_url+"','"+detail_url+"');";
+	  String sql="INSERT INTO spolo_plan_list(id,name,preview_url,detail_url,pano_url) VALUES('"+id+"','方案"+id+"','"+preview_url+"','"+detail_url+"','"+pano_url+"');";
 	  System.out.println(sql);
 	  stmt.executeUpdate(sql);
 	  res=stmt.executeQuery("select LAST_INSERT_ID()");
@@ -65,6 +65,8 @@ public class Server
      String name=null;
      String preview_url=null;
      String detail_url=null;
+     String pano_url=null;
+     
      List<PlanList> arrayPlanList=new ArrayList<PlanList>();
      while(res.next())
      {
@@ -72,6 +74,7 @@ public class Server
     	 name=res.getString("name");
     	 preview_url=res.getString("preview_url");
     	 detail_url=res.getString("detail_url");
+    	 pano_url=res.getString("pano_url");
     	 
 
      PlanList plan_list=new PlanList();
@@ -79,6 +82,7 @@ public class Server
      plan_list.name=name;
      plan_list.preveiew_url=preview_url;
      plan_list.detail_url=detail_url;
+     plan_list.pano_url=pano_url;
      
      
      arrayPlanList.add(plan_list);
