@@ -38,6 +38,7 @@ public class App
 		//Scrapy scrapy=new Scrapy();
 		//scrapy.Parse();
 		
+		
 		Server server=new Server();
 		List<PlanList> arrayPlanList=server.query();
 		String strNamePlanlist=JsonUtil.PlanListToJson(arrayPlanList,PlanListType.NAME);
@@ -48,7 +49,6 @@ public class App
         io.writeToFile("plan_name", "json","/usr/local/Cellar/tomcat/8.0.23/libexec/webapps/ROOT",strNamePlanlist);
         io.writeToFile("plan_preview_url", "json","/usr/local/Cellar/tomcat/8.0.23/libexec/webapps/ROOT",strPreviewURLPlanlist);
         io.writeToFile("plan_detail_url", "json","/usr/local/Cellar/tomcat/8.0.23/libexec/webapps/ROOT",strDetailURLPlanlist);
-        
         
     }
 }

@@ -60,7 +60,7 @@ public class Server
      Statement stmt;
      ResultSet res;
      stmt=(Statement) con.createStatement();
-     res=stmt.executeQuery("select * from spolo_plan_list;");
+     res=stmt.executeQuery("select * from spolo_plan_list limit 0,5;");
      int      id=0;
      String name=null;
      String preview_url=null;
