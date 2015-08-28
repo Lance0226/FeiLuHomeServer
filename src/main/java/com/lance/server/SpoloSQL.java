@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.lance.datastructure.BudgetCategoryType;
+import com.lance.datastructure.BudgetList;
 import com.lance.datastructure.PlanList;
 import com.mysql.jdbc.Statement;
 
@@ -87,7 +88,7 @@ public class SpoloSQL
   }
   
   
-  public List<PlanList> query() throws SQLException
+  public List<PlanList> queryPlanList() throws SQLException
   {
      Statement stmt;
      ResultSet res;
@@ -123,6 +124,40 @@ public class SpoloSQL
      return arrayPlanList;
      
      
+  }
+  
+  public List<BudgetList> queryBudgetList(int plan_id) throws SQLException
+  {
+	  Statement stmt;
+	  ResultSet res;
+	  stmt=(Statement)con.createStatement();
+	  res=stmt.executeQuery("select * from spolo_budget_list_levelone where plan_id='"+plan_id+"';");
+	  int id=0;
+	  int category=0;
+	  String name=null;
+	  String budget=null;
+	  
+	  List<BudgetList> arrayBudgetList=new ArrayList<BudgetList>();
+	  while(res.next())
+	  {
+		  id=res.getInt("id");
+		  plan_id=res.getInt("plan_id");
+		  category=res.getInt("category");
+		  name=res.getString("name");
+		  budget=res.getString("budget");
+		  
+		  BudgetList budgetList=new BudgetList();
+		  budgetList.id=id;
+		  budgetList.plan_id=plan_id;
+		  budgetList.category=category;
+		  budgetList.name=name;
+		  budgetList.budget=budget;
+		  
+		  arrayBudgetList.add(budgetList);
+	  }
+	  
+	  return arrayBudgetList;
+	  
   }
   
   

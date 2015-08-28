@@ -5,6 +5,8 @@ import com.lance.io.io;
 import com.lance.json.*;
 import com.lance.scrapy.*;
 import com.lance.server.*;
+import com.lance.xml.xmlUtil;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -26,9 +28,9 @@ public class App
 
 	public static void main( String[] args ) throws IOException, SQLException
     {
-		ScrapyPlanList planList=new ScrapyPlanList();
-		planList.parse();
-		
+		//ScrapyPlanList planList=new ScrapyPlanList();
+		//planList.parse();
+		xmlUtil.BuildXML();
 		/*
 		Server server=new Server();
 		List<PlanList> arrayPlanList=server.query();
