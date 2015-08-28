@@ -151,15 +151,8 @@ public class ScrapyBudgetList
 		  String item_budget=null;
 		  String item_name=null;
 		  
-		  if(arr_str[0].length()>2)
-		  {
-				 item_name=arr_str[0]; //去除工程两个字
-		  }
-		  
-		  if(arr_str[1].length()>2 )
-		  {
-				 item_budget=arr_str[1];
-		  }
+		  item_name=arr_str[0]; //去除工程两个字
+		  item_budget=arr_str[1];
 		  
 		  
 		  System.out.println(item_name);
