@@ -57,7 +57,7 @@ public class SpoloSQL
 	  res=stmt.executeQuery("select max(id)as id from spolo_plan_list");
 	  if(res.next())
 	  {
-		  id=res.getInt("id");
+		  id=res.getInt("id")+1;
 	  }
 	  else
 	  {
@@ -76,7 +76,7 @@ public class SpoloSQL
 	  res=stmt.executeQuery("select max(id)as id from spolo_budget_list_levelone");
 	  if(res.next())
 	  {
-		  id=res.getInt("id");
+		  id=res.getInt("id")+1;
 	  }
 	  else
 	  {

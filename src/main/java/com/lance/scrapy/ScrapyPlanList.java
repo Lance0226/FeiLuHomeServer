@@ -64,7 +64,7 @@ public class ScrapyPlanList
 			   this.pano_urlList.add(budgetList.getPano());
 			   SpoloSQL server=new SpoloSQL();
 			   int id=server.getPlanFinalId();
-			   server.insertToPlanList(id+1,this.preview_urlList.get(i),this.detail_urlList.get(i),this.pano_urlList.get(i));
+			   server.insertToPlanList(id,this.preview_urlList.get(i),this.detail_urlList.get(i),this.pano_urlList.get(i));
 			   
 			   
 			   List<BudgetList> arrBudgetList=budgetList.GetBudget(id);
