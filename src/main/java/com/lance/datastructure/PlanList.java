@@ -1,4 +1,4 @@
-package com.lance.server;
+package com.lance.datastructure;
 
 public class PlanList 
 {

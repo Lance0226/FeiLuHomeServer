@@ -1,6 +1,7 @@
-package com.lance.parse;
+package com.lance.scrapy;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,26 +12,32 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.lance.datastructure.BudgetCategoryType;
+import com.lance.datastructure.BudgetList;
+import com.lance.server.SpoloSQL;
+
 import net.sf.json.JSONObject;
 
-public class Parse 
+public class ScrapyBudgetList 
 {
   private              Map<String, String> projectInfo;
   private              Document            doc;
   private              List<Elements>      listBudgets;
   private              JSONObject          spoloJson;
   
+  private              List<BudgetList>    arrBudgetList;
+  
   private static final String              urlPrefix="http://www.xuanran001.com";
 	
-  public Parse(String strURL) throws IOException
+  public ScrapyBudgetList(String strURL) throws IOException
   {
 	  
 	  this.projectInfo=new HashMap<String, String>();
 	  
 	  doc=Jsoup.connect(strURL).timeout(100000).get();  //设置10秒超时
 	  this.listBudgets=new LinkedList<Elements>();
-	  
-	  //GetBudgets();
+	  this.arrBudgetList=new LinkedList<BudgetList>();
+	  GetBudgets();
   }
   
   public Map<String,String> GetProInfo()
@@ -115,21 +122,63 @@ public class Parse
 	  
   }
 
-  public void GetBudget(int index,String abr)
-  {
+  public List<BudgetList> GetBudget(int plan_id) throws SQLException
+  {   String category_abr=null;
+      SpoloSQL spoloSQL=new SpoloSQL();
+      int final_id=spoloSQL.getBudgetFinalId();    //查询最后一个id
+      int item_id=final_id;                     //设置起始id
+     
+	  for(int i=0;i<3;i++)  //三部分循环抓取
+	  {
+		  
 
-	  //家装基础施工预算
-	  System.out.println(this.listBudgets.get(index).last().getElementsByClass("spolo-title").text()+"\n");
+		  switch (i) 
+		  {
+		    case 0:category_abr="sgBill";break;
+		    case 1:category_abr="yzBill";break;
+		    case 2:category_abr="rzBill";break;
+		    default:System.out.println("Index error");
+			break;
+		  }
 	  
-	  Elements subTitle0s=this.listBudgets.get(index).last().select("a[data-parent=#accordion-"+abr+"]");
+	  Elements subTitle0s=this.listBudgets.get(i).last().select("a[href^=#"+category_abr+"]");
 	  for(Element subTitle0:subTitle0s)
 	  {
-		  String arr_str[]=subTitle0.text().split(" ");
-		  System.out.println(arr_str[0]+"\n");                                 //获得工程名称
-		  String project_name=arr_str[0].substring(0, arr_str[0].length()-2);  //去除工程两个字
-		  System.out.println(project_name);    
-		  System.out.println(arr_str[1]+"\n");
+
+			  
+		  item_id++;	  
+		  String arr_str[]=subTitle0.text().split(" ");                         //获得工程名称
+		  String item_budget=null;
+		  String item_name=null;
 		  
+		  if(arr_str[0].length()>2)
+		  {
+				 item_name=arr_str[0]; //去除工程两个字
+		  }
+		  
+		  if(arr_str[1].length()>2 )
+		  {
+				 item_budget=arr_str[1];
+		  }
+		  
+		  
+		  System.out.println(item_name);
+		  System.out.println(item_budget);
+		  BudgetList budget_list=new BudgetList();
+		  budget_list.id=item_id;
+		  budget_list.plan_id=plan_id;
+		  budget_list.category=i;
+		  budget_list.name=item_name;
+		  budget_list.budget=item_budget;
+		  
+		  this.arrBudgetList.add(budget_list);
+	     }
+	  }
+		  
+		  
+		  //server.insertToBudgetLevelOneList(plan_id, category, project_name, project_budget);
+		
+		  /*
 		  Element temp=this.listBudgets.get(index).last().select("div[id="+abr+"-"+project_name+"]").last();
 		  Elements node2s=null;
 		  if(temp!=null)
@@ -161,7 +210,9 @@ public class Parse
 		    
 		  }
 		  }
-	  }
+		  */
+	  return this.arrBudgetList;
+	 
 	  
 	  
   }

@@ -6,14 +6,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.lance.datastructure.BudgetCategoryType;
+import com.lance.datastructure.PlanList;
 import com.mysql.jdbc.Statement;
 
 
-public class Server 
+public class SpoloSQL 
 {
   public Connection con;//定义一个mysql链接对象
 	
-  public Server()
+  public SpoloSQL()
   {
 	  try 
 	  {
@@ -27,21 +29,11 @@ public class Server
 	  }
   }
   
-  public void insertToPlanList(String preview_url,String detail_url,String pano_url) throws SQLException
+  public void insertToPlanList(int id,String preview_url,String detail_url,String pano_url) throws SQLException
   {
 	  Statement stmt;
 	  ResultSet res;
 	  stmt=(Statement) con.createStatement();
-	  int id=0;
-	  res=stmt.executeQuery("select max(id)as id from spolo_plan_list");
-	  if(res.next())
-	  {
-		  id=res.getInt("id")+1;
-	  }
-	  else
-	  {
-		  id=0;
-	  }
 	  String sql="INSERT INTO spolo_plan_list(id,name,preview_url,detail_url,pano_url) VALUES('"+id+"','方案"+id+"','"+preview_url+"','"+detail_url+"','"+pano_url+"');";
 	  System.out.println(sql);
 	  stmt.executeUpdate(sql);
@@ -54,6 +46,46 @@ public class Server
 	  
 	  }
   }
+  
+  
+  public int getPlanFinalId() throws SQLException
+  {
+	  Statement stmt;
+	  ResultSet res;
+	  stmt=(Statement) con.createStatement();
+	  int id=0;
+	  res=stmt.executeQuery("select max(id)as id from spolo_plan_list");
+	  if(res.next())
+	  {
+		  id=res.getInt("id");
+	  }
+	  else
+	  {
+		  id=0;
+	  }
+	  
+	  return id;
+  }
+  
+  public int getBudgetFinalId() throws SQLException
+  {
+	  Statement stmt;
+	  ResultSet res;
+	  stmt=(Statement) con.createStatement();
+	  int id=0;
+	  res=stmt.executeQuery("select max(id)as id from spolo_budget_list_levelone");
+	  if(res.next())
+	  {
+		  id=res.getInt("id");
+	  }
+	  else
+	  {
+		  id=0;
+	  }
+	  
+	  return id;
+  }
+  
   
   public List<PlanList> query() throws SQLException
   {
@@ -91,5 +123,26 @@ public class Server
      return arrayPlanList;
      
      
+  }
+  
+  
+  public void insertToBudgetLevelOneList(int id,int plan_id,int category,String name,String budget ) throws SQLException //插入一级预算表
+  {
+	  Statement stmt;
+	  ResultSet res;
+	  stmt=(Statement) con.createStatement();
+	  
+	  
+	  String sql="INSERT INTO spolo_budget_list_levelone(id,plan_id,category,name,budget) VALUES('"+id+"','"+plan_id+"','"+category+"','"+name+"','"+budget+"')";
+	  System.out.println(sql);
+	  stmt.executeUpdate(sql);
+	  res=stmt.executeQuery("select LAST_INSERT_ID()");
+	  int ret_id;
+	  if(res.next())
+	  {
+		ret_id=res.getInt(1);
+		System.out.println(ret_id);
+	  
+	  }
   }
 }

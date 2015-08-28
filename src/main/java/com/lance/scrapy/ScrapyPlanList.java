@@ -1,12 +1,12 @@
 package com.lance.scrapy;
 
-import com.lance.parse.*;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.lance.datastructure.BudgetCategoryType;
+import com.lance.datastructure.BudgetList;
 import com.lance.server.*;
 
 import org.jsoup.Jsoup;
@@ -16,7 +16,7 @@ import org.jsoup.select.Elements;
 
 
 
-public class Scrapy 
+public class ScrapyPlanList 
 {
    private Document doc;
    private static final String urlPrefix="http://www.xuanran001.com";
@@ -26,7 +26,7 @@ public class Scrapy
    private List<String> preview_urlList;   //预览图url
    private List<String> pano_urlList;      //全景url
 	
-   public Scrapy() throws IOException
+   public ScrapyPlanList() throws IOException
    {
 	  this.doc=Jsoup.connect(this.urlPrefix+"/rwtarget/zhuangxiuapptubiao.html").timeout(50000).get();
 	  this.detail_urlList=new ArrayList<String>();
@@ -35,7 +35,7 @@ public class Scrapy
 	  
    }
    
-   public void Parse() throws SQLException, IOException
+   public void parse() throws SQLException, IOException
    {
 	   Elements elms1=doc.select("a[class=project-meta]");
 
@@ -60,12 +60,18 @@ public class Scrapy
 		   for(int i=0;i<this.detail_urlList.size();i++)
 		   {
 			   System.out.println(this.detail_urlList.get(i));
-			   Parse parse=new Parse(this.detail_urlList.get(i));
-			   this.pano_urlList.add(parse.getPano());
+			   ScrapyBudgetList budgetList=new ScrapyBudgetList(this.detail_urlList.get(i));
+			   this.pano_urlList.add(budgetList.getPano());
+			   SpoloSQL server=new SpoloSQL();
+			   int id=server.getPlanFinalId();
+			   server.insertToPlanList(id+1,this.preview_urlList.get(i),this.detail_urlList.get(i),this.pano_urlList.get(i));
 			   
 			   
-			   Server server=new Server();
-			   server.insertToPlanList(this.preview_urlList.get(i),this.detail_urlList.get(i),this.pano_urlList.get(i));
+			   List<BudgetList> arrBudgetList=budgetList.GetBudget(id);
+			   for(BudgetList budget:arrBudgetList)
+			   {
+				   server.insertToBudgetLevelOneList(budget.id, budget.plan_id,budget.category,budget.name, budget.budget);
+			   }
 		   }
 	   }
    }
