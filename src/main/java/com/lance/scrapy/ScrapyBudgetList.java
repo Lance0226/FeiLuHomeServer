@@ -27,6 +27,8 @@ public class ScrapyBudgetList
   
   private              List<BudgetList>    arrBudgetList;
   
+  private              List<String>        listItemTag;
+  
   private static final String              urlPrefix="http://www.xuanran001.com";
 	
   public ScrapyBudgetList(String strURL) throws IOException
@@ -37,6 +39,8 @@ public class ScrapyBudgetList
 	  doc=Jsoup.connect(strURL).timeout(100000).get();  //设置10秒超时
 	  this.listBudgets=new LinkedList<Elements>();
 	  this.arrBudgetList=new LinkedList<BudgetList>();
+	  
+	  this.listItemTag=new LinkedList<String>();
 	  GetBudgets();
   }
   
@@ -124,6 +128,7 @@ public class ScrapyBudgetList
 
   public List<BudgetList> GetBudget(int plan_id) throws SQLException
   {   String category_abr=null;
+      int project_id=0;//子项目id
      
 	  for(int i=0;i<3;i++)  //三部分循环抓取
 	  {
@@ -142,10 +147,12 @@ public class ScrapyBudgetList
 	  for(Element subTitle0:subTitle0s)
 	  {
 
-			  //"a[href^=#"+category_abr+"
+		  String itemTag=subTitle0.attr("href");
 		  
-		  if(subTitle0.attr("href")!="")
+		  if(itemTag!="")
 		  {
+			 project_id++;
+			 this.listItemTag.add(itemTag);//添加标签
 		     String arr_str[]=subTitle0.text().split(" ");                         //获得工程名称
 		     String item_budget=null;
 		     String item_name=null;
@@ -158,6 +165,7 @@ public class ScrapyBudgetList
 		     System.out.println(item_budget);
 		     BudgetList budget_list=new BudgetList();
 		     budget_list.plan_id=plan_id;
+		     budget_list.project_id=project_id+"";
 		     budget_list.category=i;
 		     budget_list.name=item_name;
 		     budget_list.budget=item_budget;
@@ -183,41 +191,9 @@ public class ScrapyBudgetList
 	  }
 		  
 		  
-		  //server.insertToBudgetLevelOneList(plan_id, category, project_name, project_budget);
+		 
 		
-		  /*
-		  Element temp=this.listBudgets.get(index).last().select("div[id="+abr+"-"+project_name+"]").last();
-		  Elements node2s=null;
-		  if(temp!=null)
-		  {
-		    node2s=temp.getElementsByTag("tr");//装修项目
-		  }
-		  
-		  if(node2s!=null)
-		  {
-		  for(Element node2:node2s)
-		  {
-			  Elements node3_1s=node2.select("th"); //项目的具体选项
-			  if(node3_1s!=null)
-			  {
-		         for (Element node3:node3_1s)
-		         {
-		    	   System.out.println(node3.text()+"\n");
-		         }
-			  }
-		      
-		      Elements node3_2s=node2.select("td");
-		      if(node3_2s!=null)
-		      {
-		    	  for(Element node3:node3_2s)
-		    	  {
-		    		System.out.println(node3.text()+"\n");  
-		    	  }
-		      }
-		    
-		  }
-		  }
-		  */
+		 
 	  return this.arrBudgetList;
 	 
 	  

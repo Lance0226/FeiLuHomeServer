@@ -55,18 +55,21 @@ public class xmlUtil
 		    	  {
 				    case 0:section_name="sgBill";
 				           node=document.createElement("node3");
+				           node.setAttribute("id",budget.project_id);
 				           node.setAttribute("name", budget.name);
 				           node.setAttribute("budget",budget.budget);
 				           node21.appendChild(node);
 				           break;
 				    case 1:section_name="yzBill";
 				           node=document.createElement("node3"); 
+				           node.setAttribute("id",budget.project_id);
 				           node.setAttribute("name", budget.name);
 				           node.setAttribute("budget",budget.budget);
 			               node22.appendChild(node);
 				           break;
 				    case 2:section_name="rzBill";
 				           node=document.createElement("node3");
+				           node.setAttribute("id",budget.project_id);
 				           node.setAttribute("name", budget.name);
 				           node.setAttribute("budget",budget.budget);
 		                   node23.appendChild(node);
