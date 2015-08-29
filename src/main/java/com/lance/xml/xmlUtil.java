@@ -3,9 +3,11 @@ package com.lance.xml;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -14,10 +16,12 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import com.lance.datastructure.BudgetList;
+
 
 public class xmlUtil 
 {
-   public static void BuildXML()
+   public static void BuildXML(List<BudgetList> arrBudgetList)
    {
 	   String xmlStr=null;
 	   DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
@@ -26,41 +30,58 @@ public class xmlUtil
 		     Document document=builder.newDocument();
 		     document.setXmlVersion("1.0");
 		     
-		     Element root=document.createElement("root");
-		     document.appendChild(root);
-		     
-		     Element telephone=document.createElement("TelePhone");
-		     
-		     Element nokia=document.createElement("type");
-		     nokia.setAttribute("name", "nokia");
-		     
-		     Element priceNokia = document.createElement("price");
-	            priceNokia.setTextContent("599");
-	            nokia.appendChild(priceNokia);
-
-	            Element operatorNokia = document.createElement("operator");
-	            operatorNokia.setTextContent("CMCC");
-	            nokia.appendChild(operatorNokia);
-
-	            telephone.appendChild(nokia);
-
-	            Element xiaomi = document.createElement("type");
-	            xiaomi.setAttribute("name", "xiaomi");
-
-	            Element priceXiaoMi = document.createElement("price");
-	            priceXiaoMi.setTextContent("699");
-	            xiaomi.appendChild(priceXiaoMi);
-
-	            Element operatorXiaoMi = document.createElement("operator");
-	            operatorXiaoMi.setTextContent("ChinaNet");
-	            xiaomi.appendChild(operatorXiaoMi);
-
-	            telephone.appendChild(xiaomi);
-
-	            root.appendChild(telephone);
-
+		      Element root=document.createElement("root");
+		      document.appendChild(root);
+		      
+		      Element node11=document.createElement("node1");
+		      root.appendChild(node11);
+		      
+		      Element node21=document.createElement("node2");
+		      node21.setAttribute("name","家庭基础施工预算");
+		      Element node22=document.createElement("node2");
+		      node22.setAttribute("name","家装基础建材预算");
+		      Element node23=document.createElement("node2");
+		      node23.setAttribute("name","家装基础家居预算");
+		      node11.appendChild(node21);
+		      node11.appendChild(node22);
+		      node11.appendChild(node23);
+		      
+		      String section_name=null;//预算分区的名字
+		      
+		      for(BudgetList budget:arrBudgetList)
+		      {   
+		    	  Element node;
+		    	  switch (budget.category) 
+		    	  {
+				    case 0:section_name="sgBill";
+				           node=document.createElement("node3");
+				           node.setAttribute("name", budget.name);
+				           node.setAttribute("budget",budget.budget);
+				           node21.appendChild(node);
+				           break;
+				    case 1:section_name="yzBill";
+				           node=document.createElement("node3"); 
+				           node.setAttribute("name", budget.name);
+				           node.setAttribute("budget",budget.budget);
+			               node22.appendChild(node);
+				           break;
+				    case 2:section_name="rzBill";
+				           node=document.createElement("node3");
+				           node.setAttribute("name", budget.name);
+				           node.setAttribute("budget",budget.budget);
+		                   node23.appendChild(node);
+				           break;
+				    default:System.out.print("budget category error");break;
+				    
+				
+				  }
+		      }
+		      
+		      
+		      
 	            TransformerFactory transFactory = TransformerFactory.newInstance();
 	            Transformer transFormer = transFactory.newTransformer();
+	            transFormer.setOutputProperty(OutputKeys.INDENT,"yes");
 	            DOMSource domSource = new DOMSource(document);
 
 	            //export string

@@ -8,6 +8,7 @@ import java.util.List;
 import com.lance.datastructure.BudgetCategoryType;
 import com.lance.datastructure.BudgetList;
 import com.lance.server.*;
+import com.lance.xml.xmlUtil;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -68,10 +69,7 @@ public class ScrapyPlanList
 			   
 			   
 			   List<BudgetList> arrBudgetList=budgetList.GetBudget(id);
-			   for(BudgetList budget:arrBudgetList)
-			   {
-				   server.insertToBudgetLevelOneList(budget.id, budget.plan_id,budget.category,budget.name, budget.budget);
-			   }
+			   xmlUtil.BuildXML(arrBudgetList);
 		   }
 	   }
    }

@@ -124,9 +124,6 @@ public class ScrapyBudgetList
 
   public List<BudgetList> GetBudget(int plan_id) throws SQLException
   {   String category_abr=null;
-      SpoloSQL spoloSQL=new SpoloSQL();
-      int final_id=spoloSQL.getBudgetFinalId();    //查询最后一个id
-      int item_id=final_id;                     //设置起始id
      
 	  for(int i=0;i<3;i++)  //三部分循环抓取
 	  {
@@ -141,31 +138,48 @@ public class ScrapyBudgetList
 			break;
 		  }
 	  
-	  Elements subTitle0s=this.listBudgets.get(i).last().select("a[href^=#"+category_abr+"]");
+	  Elements subTitle0s=this.listBudgets.get(i).last().select("a[data-parent=#accordion-"+category_abr+"]");
 	  for(Element subTitle0:subTitle0s)
 	  {
 
-			  
-		  item_id++;	  
-		  String arr_str[]=subTitle0.text().split(" ");                         //获得工程名称
-		  String item_budget=null;
-		  String item_name=null;
+			  //"a[href^=#"+category_abr+"
 		  
-		  item_name=arr_str[0]; //去除工程两个字
-		  item_budget=arr_str[1];
+		  if(subTitle0.attr("href")!="")
+		  {
+		     String arr_str[]=subTitle0.text().split(" ");                         //获得工程名称
+		     String item_budget=null;
+		     String item_name=null;
+		  
+		     item_name=arr_str[0]; 
+		     item_budget=arr_str[1];
 		  
 		  
-		  System.out.println(item_name);
-		  System.out.println(item_budget);
-		  BudgetList budget_list=new BudgetList();
-		  budget_list.id=item_id;
-		  budget_list.plan_id=plan_id;
-		  budget_list.category=i;
-		  budget_list.name=item_name;
-		  budget_list.budget=item_budget;
+		     System.out.println(item_name);
+		     System.out.println(item_budget);
+		     BudgetList budget_list=new BudgetList();
+		     budget_list.plan_id=plan_id;
+		     budget_list.category=i;
+		     budget_list.name=item_name;
+		     budget_list.budget=item_budget;
+		     this.arrBudgetList.add(budget_list);
+		  }
+		  else
+		  {   String arr_str[]=subTitle0.text().split("：");                         //获得工程名称
+		      String item_budget=null;
+		      String item_name=null;
+		      item_name=arr_str[0]; 
+			  item_budget=arr_str[1];
+		      
+			  BudgetList budget_list=new BudgetList();
+			  budget_list.plan_id=plan_id;
+			  budget_list.category=i;
+			  budget_list.name=item_name;
+			  budget_list.budget=item_budget;
+			  this.arrBudgetList.add(budget_list);
+		  }
+	  }
 		  
-		  this.arrBudgetList.add(budget_list);
-	     }
+	
 	  }
 		  
 		  

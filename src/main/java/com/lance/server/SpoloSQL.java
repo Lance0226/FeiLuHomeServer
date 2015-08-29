@@ -147,7 +147,6 @@ public class SpoloSQL
 		  budget=res.getString("budget");
 		  
 		  BudgetList budgetList=new BudgetList();
-		  budgetList.id=id;
 		  budgetList.plan_id=plan_id;
 		  budgetList.category=category;
 		  budgetList.name=name;

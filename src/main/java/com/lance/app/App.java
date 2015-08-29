@@ -28,9 +28,9 @@ public class App
 
 	public static void main( String[] args ) throws IOException, SQLException
     {
-		//ScrapyPlanList planList=new ScrapyPlanList();
-		//planList.parse();
-		xmlUtil.BuildXML();
+		ScrapyPlanList planList=new ScrapyPlanList();
+		planList.parse();
+		
 		/*
 		Server server=new Server();
 		List<PlanList> arrayPlanList=server.query();
