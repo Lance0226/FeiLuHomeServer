@@ -174,6 +174,7 @@ public class ScrapyBudgetList
 		     BudgetList budget_list=new BudgetList();
 		     budget_list.plan_id=plan_id;
 		     budget_list.project_id=project_id+"";
+		     budget_list.item_id=itemTag;
 		     budget_list.category=i;
 		     budget_list.name=item_name;
 		     budget_list.budget=item_budget;
@@ -189,6 +190,7 @@ public class ScrapyBudgetList
 			  BudgetList budget_list=new BudgetList();
 			  budget_list.plan_id=plan_id;
 			  budget_list.project_id=project_id+"";
+			  budget_list.item_id="";
 			  budget_list.category=i;
 			  budget_list.name=item_name;
 			  budget_list.budget=item_budget;
@@ -209,7 +211,7 @@ public class ScrapyBudgetList
 	  
   }
   
-  public void getBudgetItemList()
+  public void parseBudgetItem()
   {
 	  for(String item:this.listItemTag)
 	  {
@@ -237,7 +239,7 @@ public class ScrapyBudgetList
 				    case 2:budgetItemOne.item_amount=sub2Item.text();break;
 				    case 3:budgetItemOne.item_price=sub2Item.text();break;
 				    case 4:budgetItemOne.item_total=sub2Item.text();break;
-				    case 5:budgetItemOne.item_mothod=sub2Item.text();break;
+				    case 5:budgetItemOne.item_method=sub2Item.text();break;
 				    default:System.out.println("Index eror");break;
 				  }
 			  }
@@ -274,6 +276,17 @@ public class ScrapyBudgetList
 		  }
 		 
 	  }
+  }
+  
+  
+  public List<BudgetItemOne> getItemListOne()
+  {
+	  return this.listBudgetItemOne;
+  }
+  
+  public List<BudgetItemTwo> getItemListTwo()
+  {
+	  return this.listBudgetItemTwo;
   }
   
   

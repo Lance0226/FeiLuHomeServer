@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.lance.datastructure.BudgetCategoryType;
+import com.lance.datastructure.BudgetItemOne;
+import com.lance.datastructure.BudgetItemTwo;
 import com.lance.datastructure.BudgetList;
 import com.lance.server.*;
 import com.lance.xml.xmlUtil;
@@ -65,11 +67,11 @@ public class ScrapyPlanList
 			   SpoloSQL server=new SpoloSQL();
 			   int id=server.getPlanFinalId();
 			   server.insertToPlanList(id,this.preview_urlList.get(i),this.detail_urlList.get(i),this.pano_urlList.get(i));
-			   
-			   
 			   List<BudgetList> arrBudgetList=budgetList.GetBudget(id);
-			   budgetList.getBudgetItemList();
-			   xmlUtil.BuildXML(arrBudgetList);
+			   budgetList.parseBudgetItem();
+			   List<BudgetItemOne> arrBudgetItemOneList=budgetList.getItemListOne();
+			   List<BudgetItemTwo> arrBudgetItemTwoList=budgetList.getItemListTwo();
+			   xmlUtil.BuildXML(arrBudgetList,arrBudgetItemOneList,arrBudgetItemTwoList);
 		   }
 	   }
    }

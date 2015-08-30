@@ -3,7 +3,9 @@ package com.lance.xml;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -16,12 +18,14 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import com.lance.datastructure.BudgetItemOne;
+import com.lance.datastructure.BudgetItemTwo;
 import com.lance.datastructure.BudgetList;
 
 
 public class xmlUtil 
 {
-   public static void BuildXML(List<BudgetList> arrBudgetList)
+   public static void BuildXML(List<BudgetList> arrBudgetList,List<BudgetItemOne> arrBudgetItemOneList,List<BudgetItemTwo> arrBudgetItemTwoList)
    {
 	   String xmlStr=null;
 	   DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
@@ -47,6 +51,7 @@ public class xmlUtil
 		      node11.appendChild(node23);
 		      
 		      String section_name=null;//预算分区的名字
+		      Map<String, Element> node3List=new HashMap<String, Element>();
 		      
 		      for(BudgetList budget:arrBudgetList)
 		      {   
@@ -56,22 +61,28 @@ public class xmlUtil
 				    case 0:section_name="sgBill";
 				           node=document.createElement("node3");
 				           node.setAttribute("id",budget.project_id);
+				           node.setAttribute("item_id", budget.item_id);
 				           node.setAttribute("name", budget.name);
 				           node.setAttribute("budget",budget.budget);
+				           node3List.put(budget.item_id, node);
 				           node21.appendChild(node);
 				           break;
 				    case 1:section_name="yzBill";
 				           node=document.createElement("node3"); 
 				           node.setAttribute("id",budget.project_id);
+				           node.setAttribute("item_id", budget.item_id);
 				           node.setAttribute("name", budget.name);
 				           node.setAttribute("budget",budget.budget);
+				           node3List.put(budget.item_id, node);
 			               node22.appendChild(node);
 				           break;
 				    case 2:section_name="rzBill";
 				           node=document.createElement("node3");
 				           node.setAttribute("id",budget.project_id);
+				           node.setAttribute("item_id", budget.item_id);
 				           node.setAttribute("name", budget.name);
 				           node.setAttribute("budget",budget.budget);
+				           node3List.put(budget.item_id, node);
 		                   node23.appendChild(node);
 				           break;
 				    default:System.out.print("budget category error");break;
@@ -80,6 +91,27 @@ public class xmlUtil
 				  }
 		      }
 		      
+		      for(BudgetItemOne item:arrBudgetItemOneList)
+		      {
+		    	  Element node2=document.createElement("node4");
+		    	  node2.setAttribute("item_id", item.project_id);
+		    	  node2.setAttribute("item_name", item.item_name);
+		    	  node2.setAttribute("item_unit", item.item_unit);
+		    	  node2.setAttribute("item_amount", item.item_amount);
+		    	  node2.setAttribute("item_price", item.item_price);
+		    	  node2.setAttribute("item_total", item.item_total);
+		    	  node2.setAttribute("item_method", item.item_method);
+		    	  
+		    	  for(String item_id:node3List.keySet())  //遍历上层节点，找到父节点
+		    	  {
+		    		  if(item_id==item.project_id)
+		    		  {
+		    			  node3List.get(item_id).appendChild(node2);
+		    		  }
+		    	  }
+		    	  
+		      }
+		     
 		      
 		      
 	            TransformerFactory transFactory = TransformerFactory.newInstance();
