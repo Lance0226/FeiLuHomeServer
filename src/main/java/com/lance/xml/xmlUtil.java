@@ -19,13 +19,14 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import com.lance.datastructure.BudgetItemOne;
+import com.lance.datastructure.BudgetItemThree;
 import com.lance.datastructure.BudgetItemTwo;
 import com.lance.datastructure.BudgetList;
 
 
 public class xmlUtil 
 {
-   public static void BuildXML(List<BudgetList> arrBudgetList,List<BudgetItemOne> arrBudgetItemOneList,List<BudgetItemTwo> arrBudgetItemTwoList)
+   public static void BuildXML(List<BudgetList> arrBudgetList,List<BudgetItemOne> arrBudgetItemOneList,List<BudgetItemTwo> arrBudgetItemTwoList,List<BudgetItemThree> arrBudgetItemThreeList)
    {
 	   String xmlStr=null;
 	   DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
@@ -101,6 +102,53 @@ public class xmlUtil
 		    	  node2.setAttribute("item_price", item.item_price);
 		    	  node2.setAttribute("item_total", item.item_total);
 		    	  node2.setAttribute("item_method", item.item_method);
+		    	  
+		    	  for(String item_id:node3List.keySet())  //遍历上层节点，找到父节点
+		    	  {
+		    		  if(item_id==item.project_id)
+		    		  {
+		    			  node3List.get(item_id).appendChild(node2);
+		    		  }
+		    	  }
+		    	  
+		      }
+		      
+		      for(BudgetItemTwo item:arrBudgetItemTwoList)
+		      {
+		    	  Element node2=document.createElement("node4");
+		    	  node2.setAttribute("item_id", item.project_id);
+		    	  node2.setAttribute("item_name", item.item_name);
+		    	  node2.setAttribute("item_brand", item.item_brand);
+		    	  node2.setAttribute("item_code", item.item_code);
+		    	  node2.setAttribute("item_unit", item.item_unit);
+		    	  node2.setAttribute("item_amount", item.item_amount);
+		    	  node2.setAttribute("item_price", item.item_price);
+		    	  node2.setAttribute("item_total", item.item_total);
+		    	  node2.setAttribute("item_address", item.item_address);
+		    	  
+		    	  for(String item_id:node3List.keySet())  //遍历上层节点，找到父节点
+		    	  {
+		    		  if(item_id==item.project_id)
+		    		  {
+		    			  node3List.get(item_id).appendChild(node2);
+		    		  }
+		    	  }
+		    	  
+		      }
+		      
+		      for(BudgetItemThree item:arrBudgetItemThreeList)
+		      {
+		    	  Element node2=document.createElement("node4");
+		    	  node2.setAttribute("item_address", item.item_address);
+		    	  node2.setAttribute("item_category",item.item_category);
+		    	  node2.setAttribute("item_id", item.project_id);
+		    	  node2.setAttribute("item_name", item.item_name);
+		    	  node2.setAttribute("item_brand", item.item_brand);
+		    	  node2.setAttribute("item_code", item.item_code);
+		    	  node2.setAttribute("item_amount", item.item_amount);
+		    	  node2.setAttribute("item_price", item.item_price);
+		    	  node2.setAttribute("item_total", item.item_total);
+		    	  node2.setAttribute("item_address", item.item_address);
 		    	  
 		    	  for(String item_id:node3List.keySet())  //遍历上层节点，找到父节点
 		    	  {

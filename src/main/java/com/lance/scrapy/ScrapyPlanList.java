@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.lance.datastructure.BudgetCategoryType;
 import com.lance.datastructure.BudgetItemOne;
+import com.lance.datastructure.BudgetItemThree;
 import com.lance.datastructure.BudgetItemTwo;
 import com.lance.datastructure.BudgetList;
 import com.lance.server.*;
@@ -71,7 +72,8 @@ public class ScrapyPlanList
 			   budgetList.parseBudgetItem();
 			   List<BudgetItemOne> arrBudgetItemOneList=budgetList.getItemListOne();
 			   List<BudgetItemTwo> arrBudgetItemTwoList=budgetList.getItemListTwo();
-			   xmlUtil.BuildXML(arrBudgetList,arrBudgetItemOneList,arrBudgetItemTwoList);
+			   List<BudgetItemThree> arrBudgetItemThreeList=budgetList.getItemListThree();
+			   xmlUtil.BuildXML(arrBudgetList,arrBudgetItemOneList,arrBudgetItemTwoList,arrBudgetItemThreeList);
 		   }
 	   }
    }

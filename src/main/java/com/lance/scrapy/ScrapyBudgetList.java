@@ -15,6 +15,7 @@ import org.jsoup.select.Elements;
 
 import com.lance.datastructure.BudgetCategoryType;
 import com.lance.datastructure.BudgetItemOne;
+import com.lance.datastructure.BudgetItemThree;
 import com.lance.datastructure.BudgetItemTwo;
 import com.lance.datastructure.BudgetList;
 import com.lance.datastructure.ItemTag;
@@ -34,6 +35,7 @@ public class ScrapyBudgetList
   private              List<String>        listItemTag;
   private              List<BudgetItemOne>    listBudgetItemOne;
   private              List<BudgetItemTwo>    listBudgetItemTwo;
+  private              List<BudgetItemThree>  listBudgetItemThree;
   
   private static final String              urlPrefix="http://www.xuanran001.com";
 	
@@ -49,6 +51,7 @@ public class ScrapyBudgetList
 	  this.listItemTag=new LinkedList<String>();
 	  this.listBudgetItemOne=new LinkedList<BudgetItemOne>();
 	  this.listBudgetItemTwo=new LinkedList<BudgetItemTwo>();
+	  this.listBudgetItemThree=new LinkedList<BudgetItemThree>();
 	  GetBudgets();
   }
   
@@ -215,6 +218,8 @@ public class ScrapyBudgetList
   {
 	  for(String item:this.listItemTag)
 	  {
+		  String category=item.substring(0,6);
+		  System.out.println(category);
 		  Element subItem_temp=this.doc.select("div[id="+item+"]").last().getElementsByTag("tbody").last();
 		  if(subItem_temp!=null)
 		  {
@@ -224,7 +229,7 @@ public class ScrapyBudgetList
 			  
 			 
 			  Elements sub2Items=subItem.getElementsByTag("td");
-			  if(sub2Items.size()==5)
+			  if(category.equals("sgBill"))
 			  {
 			  BudgetItemOne budgetItemOne=new BudgetItemOne();
 			  budgetItemOne.project_id=item;
@@ -245,7 +250,7 @@ public class ScrapyBudgetList
 			  }
 			  this.listBudgetItemOne.add(budgetItemOne);
 			  }
-			  else if(sub2Items.size()==7)
+			  else if(category.equals("yzBill"))
 			  {
 				  BudgetItemTwo budgetItemTwo=new BudgetItemTwo();
 				  budgetItemTwo.project_id=item;
@@ -268,6 +273,33 @@ public class ScrapyBudgetList
 				  } 
 				  this.listBudgetItemTwo.add(budgetItemTwo);
 			  }
+			  else if(category.equals("rzBill"))
+			  {
+				  BudgetItemThree budgetItemThree=new BudgetItemThree();
+				  budgetItemThree.project_id=item;
+				  budgetItemThree.item_category=subItem.getElementsByTag("th").last().text();
+				  int i=0;
+				  for(Element sub2Item:sub2Items)
+				  {
+					  i++;
+					  switch (i) 
+					  {
+					    case 1:budgetItemThree.item_name=sub2Item.text();break;
+					    case 2:budgetItemThree.item_brand=sub2Item.text();break;
+					    case 3:budgetItemThree.item_code=sub2Item.text();break;
+					    case 4:budgetItemThree.item_amount=sub2Item.text();break;
+					    case 5:budgetItemThree.item_price=sub2Item.text();break;
+					    case 6:budgetItemThree.item_total=sub2Item.text();break;
+					    case 7:budgetItemThree.item_address=sub2Item.text();break;
+					    default:System.out.println("Index eror");break;
+					  }
+				  } 
+				  this.listBudgetItemThree.add(budgetItemThree);
+			  }
+			  else
+			  {
+				  System.out.println("Category error");
+			  }
 			  
 			  
 			  
@@ -287,6 +319,11 @@ public class ScrapyBudgetList
   public List<BudgetItemTwo> getItemListTwo()
   {
 	  return this.listBudgetItemTwo;
+  }
+  
+  public List<BudgetItemThree> getItemListThree()
+  {
+	  return this.listBudgetItemThree;
   }
   
   
