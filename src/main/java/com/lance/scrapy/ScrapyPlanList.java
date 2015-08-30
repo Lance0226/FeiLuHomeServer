@@ -60,7 +60,6 @@ public class ScrapyPlanList
 	   {
 		   for(int i=0;i<this.detail_urlList.size();i++)
 		   {
-			   System.out.println(this.detail_urlList.get(i));
 			   ScrapyBudgetList budgetList=new ScrapyBudgetList(this.detail_urlList.get(i));
 			   this.pano_urlList.add(budgetList.getPano());
 			   SpoloSQL server=new SpoloSQL();
@@ -69,6 +68,7 @@ public class ScrapyPlanList
 			   
 			   
 			   List<BudgetList> arrBudgetList=budgetList.GetBudget(id);
+			   budgetList.getBudgetItemList();
 			   xmlUtil.BuildXML(arrBudgetList);
 		   }
 	   }

@@ -1,8 +1,8 @@
 package com.lance.datastructure;
 
-public class BudgetItem 
+public class BudgetItemOne 
 {
-public int     project_id;
+public String  project_id;
 public String  item_name;
 public String  item_unit;
 public String  item_amount;

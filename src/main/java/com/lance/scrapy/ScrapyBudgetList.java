@@ -2,6 +2,7 @@ package com.lance.scrapy;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,7 +14,10 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import com.lance.datastructure.BudgetCategoryType;
+import com.lance.datastructure.BudgetItemOne;
+import com.lance.datastructure.BudgetItemTwo;
 import com.lance.datastructure.BudgetList;
+import com.lance.datastructure.ItemTag;
 import com.lance.server.SpoloSQL;
 
 import net.sf.json.JSONObject;
@@ -28,6 +32,8 @@ public class ScrapyBudgetList
   private              List<BudgetList>    arrBudgetList;
   
   private              List<String>        listItemTag;
+  private              List<BudgetItemOne>    listBudgetItemOne;
+  private              List<BudgetItemTwo>    listBudgetItemTwo;
   
   private static final String              urlPrefix="http://www.xuanran001.com";
 	
@@ -41,6 +47,8 @@ public class ScrapyBudgetList
 	  this.arrBudgetList=new LinkedList<BudgetList>();
 	  
 	  this.listItemTag=new LinkedList<String>();
+	  this.listBudgetItemOne=new LinkedList<BudgetItemOne>();
+	  this.listBudgetItemTwo=new LinkedList<BudgetItemTwo>();
 	  GetBudgets();
   }
   
@@ -147,11 +155,13 @@ public class ScrapyBudgetList
 	  for(Element subTitle0:subTitle0s)
 	  {
 
-		  String itemTag=subTitle0.attr("href");
+		  String itemTagTemp=subTitle0.attr("href");
 		  
-		  if(itemTag!="")
+		  
+		  if(itemTagTemp!="")
 		  {
 			 project_id++;
+			 String itemTag=itemTagTemp.substring(1, itemTagTemp.length());//去掉＃
 			 this.listItemTag.add(itemTag);//添加标签
 		     String arr_str[]=subTitle0.text().split(" ");                         //获得工程名称
 		     String item_budget=null;
@@ -161,8 +171,6 @@ public class ScrapyBudgetList
 		     item_budget=arr_str[1];
 		  
 		  
-		     System.out.println(item_name);
-		     System.out.println(item_budget);
 		     BudgetList budget_list=new BudgetList();
 		     budget_list.plan_id=plan_id;
 		     budget_list.project_id=project_id+"";
@@ -180,6 +188,7 @@ public class ScrapyBudgetList
 		      
 			  BudgetList budget_list=new BudgetList();
 			  budget_list.plan_id=plan_id;
+			  budget_list.project_id=project_id+"";
 			  budget_list.category=i;
 			  budget_list.name=item_name;
 			  budget_list.budget=item_budget;
@@ -199,6 +208,74 @@ public class ScrapyBudgetList
 	  
 	  
   }
+  
+  public void getBudgetItemList()
+  {
+	  for(String item:this.listItemTag)
+	  {
+		  Element subItem_temp=this.doc.select("div[id="+item+"]").last().getElementsByTag("tbody").last();
+		  if(subItem_temp!=null)
+		  {
+		  Elements subItems=subItem_temp.getElementsByTag("tr");
+		  for(Element subItem:subItems )
+		  {
+			  
+			 
+			  Elements sub2Items=subItem.getElementsByTag("td");
+			  if(sub2Items.size()==5)
+			  {
+			  BudgetItemOne budgetItemOne=new BudgetItemOne();
+			  budgetItemOne.project_id=item;
+			  budgetItemOne.item_name=subItem.getElementsByTag("th").last().text();
+			  int i=0;
+			  for(Element sub2Item:sub2Items)
+			  {
+				  i++;
+				  switch (i) 
+				  {
+				    case 1:budgetItemOne.item_unit=sub2Item.text();break;
+				    case 2:budgetItemOne.item_amount=sub2Item.text();break;
+				    case 3:budgetItemOne.item_price=sub2Item.text();break;
+				    case 4:budgetItemOne.item_total=sub2Item.text();break;
+				    case 5:budgetItemOne.item_mothod=sub2Item.text();break;
+				    default:System.out.println("Index eror");break;
+				  }
+			  }
+			  this.listBudgetItemOne.add(budgetItemOne);
+			  }
+			  else if(sub2Items.size()==7)
+			  {
+				  BudgetItemTwo budgetItemTwo=new BudgetItemTwo();
+				  budgetItemTwo.project_id=item;
+				  budgetItemTwo.item_name=subItem.getElementsByTag("th").last().text();
+				  int i=0;
+				  for(Element sub2Item:sub2Items)
+				  {
+					  i++;
+					  switch (i) 
+					  {
+					    case 1:budgetItemTwo.item_brand=sub2Item.text();break;
+					    case 2:budgetItemTwo.item_code=sub2Item.text();break;
+					    case 3:budgetItemTwo.item_unit=sub2Item.text();break;
+					    case 4:budgetItemTwo.item_amount=sub2Item.text();break;
+					    case 5:budgetItemTwo.item_price=sub2Item.text();break;
+					    case 6:budgetItemTwo.item_total=sub2Item.text();break;
+					    case 7:budgetItemTwo.item_address=sub2Item.text();break;
+					    default:System.out.println("Index eror");break;
+					  }
+				  } 
+				  this.listBudgetItemTwo.add(budgetItemTwo);
+			  }
+			  
+			  
+			  
+				  
+		  }
+		  }
+		 
+	  }
+  }
+  
   
   private String turnSwfToHtmlURL(String pano_swf_url)  //将swf的url转变为html5的
   {

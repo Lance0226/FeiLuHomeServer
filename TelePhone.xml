@@ -2,36 +2,39 @@
 <root>
 <node1>
 <node2 name="家庭基础施工预算">
-<node3 budget="结算：4375.2" id="1" name="客餐厅工程"/>
-<node3 budget="结算：1192" id="2" name="主卧工程"/>
-<node3 budget="结算：1030.5" id="3" name="次卧工程"/>
-<node3 budget="结算：602.9" id="4" name="客卧工程"/>
-<node3 budget="结算：1719.6" id="5" name="厨房工程"/>
-<node3 budget="结算：627.1" id="6" name="阳台工程"/>
-<node3 budget="结算：2550.4" id="7" name="卫生间工程"/>
-<node3 budget="结算：(实测后结算)" id="8" name="*水电及其安装与杂项其他"/>
-<node3 budget="(温馨提示:此项为家装公司增项内容，请咨询该装修公司)" id="9" name="家装公司自定义工程"/>
-<node3 budget="12097.7 元" id="" name="家装基础施工报价合计"/>
+<node3 budget="结算：3263.1" id="1" name="客餐厅工程"/>
+<node3 budget="结算：913" id="2" name="主卧工程"/>
+<node3 budget="结算：791.3" id="3" name="次卧工程"/>
+<node3 budget="结算：709.7" id="4" name="客卧工程"/>
+<node3 budget="结算：2205.4" id="5" name="厨房工程"/>
+<node3 budget="结算：351" id="6" name="阳台工程"/>
+<node3 budget="结算：444.6" id="7" name="阳台工程"/>
+<node3 budget="结算：2154.2" id="8" name="卫生间工程"/>
+<node3 budget="结算：(实测后结算)" id="9" name="*水电及其安装与杂项其他"/>
+<node3 budget="(温馨提示:此项为家装公司增项内容，请咨询该装修公司)" id="10" name="家装公司自定义工程"/>
+<node3 budget="10832.4 元" id="10" name="家装基础施工报价合计"/>
 </node2>
 <node2 name="家装基础建材预算">
-<node3 budget="结算：11932.8" id="10" name="客餐厅工程"/>
-<node3 budget="结算：10904.8" id="11" name="主卧工程"/>
-<node3 budget="结算：9861.5" id="12" name="次卧工程"/>
-<node3 budget="结算：7542.8" id="13" name="客卧工程"/>
-<node3 budget="结算：9694.8" id="14" name="厨房工程"/>
-<node3 budget="结算：4358.8" id="15" name="阳台工程"/>
-<node3 budget="结算：14954.1" id="16" name="卫生间工程"/>
-<node3 budget="69249.6 元" id="" name="家装基础硬装报价合计"/>
+<node3 budget="结算：6497.9" id="11" name="客餐厅工程"/>
+<node3 budget="结算：5440.5" id="12" name="主卧工程"/>
+<node3 budget="结算：7342.9" id="13" name="次卧工程"/>
+<node3 budget="结算：6900.1" id="14" name="客卧工程"/>
+<node3 budget="结算：12414.8" id="15" name="厨房工程"/>
+<node3 budget="结算：1924.4" id="16" name="阳台工程"/>
+<node3 budget="结算：3775.9" id="17" name="阳台工程"/>
+<node3 budget="结算：13273.2" id="18" name="卫生间工程"/>
+<node3 budget="57569.7 元" id="18" name="家装基础硬装报价合计"/>
 </node2>
 <node2 name="家装基础家居预算">
-<node3 budget="结算：38757.9" id="17" name="客餐厅"/>
-<node3 budget="结算：17543" id="18" name="主卧"/>
-<node3 budget="结算：18198" id="19" name="次卧"/>
-<node3 budget="结算：10207" id="20" name="客卧"/>
-<node3 budget="结算：2099" id="21" name="厨房"/>
-<node3 budget="结算：2518" id="22" name="阳台"/>
-<node3 budget="结算：18499" id="23" name="卫生间"/>
-<node3 budget="107821.9 元" id="" name="家装基础软装报价合计"/>
+<node3 budget="结算：43536" id="19" name="客餐厅"/>
+<node3 budget="结算：12280" id="20" name="主卧"/>
+<node3 budget="结算：8448" id="21" name="次卧"/>
+<node3 budget="结算：11392" id="22" name="客卧"/>
+<node3 budget="结算：6020" id="23" name="厨房"/>
+<node3 budget="结算：246" id="24" name="阳台"/>
+<node3 budget="结算：290" id="25" name="阳台"/>
+<node3 budget="结算：784" id="26" name="卫生间"/>
+<node3 budget="82996 元" id="26" name="家装基础软装报价合计"/>
 </node2>
 </node1>
 </root>
