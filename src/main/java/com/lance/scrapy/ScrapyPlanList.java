@@ -73,7 +73,7 @@ public class ScrapyPlanList
 			   List<BudgetItemOne> arrBudgetItemOneList=budgetList.getItemListOne();
 			   List<BudgetItemTwo> arrBudgetItemTwoList=budgetList.getItemListTwo();
 			   List<BudgetItemThree> arrBudgetItemThreeList=budgetList.getItemListThree();
-			   xmlUtil.BuildXML(arrBudgetList,arrBudgetItemOneList,arrBudgetItemTwoList,arrBudgetItemThreeList);
+			   xmlUtil.BuildXML("xml"+i,arrBudgetList,arrBudgetItemOneList,arrBudgetItemTwoList,arrBudgetItemThreeList);
 		   }
 	   }
    }

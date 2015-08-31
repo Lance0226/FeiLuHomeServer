@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root>
+<node1>
+<node2 name="家庭基础施工预算">
+<node3 budget="结算：2494.8" id="1" item_id="sgBill-客厅" name="客厅工程">
+<node4 item_amount="63.4" item_id="sgBill-客厅" item_method="1、含墙面批刮腻子；2、墙面清理干净，无浮尘；3、刮腻子2-3遍，砂纸打磨平整；4、阴阳角顺直；5、清理原墙面浮灰，滚涂乳胶漆，乳胶漆甲方提供。" item_name="墙面乳胶漆处理" item_price="28" item_total="1775.2" item_unit="㎡"/>
+<node4 item_amount="25.7" item_id="sgBill-客厅" item_method="1、含墙面批刮腻子；2、墙面清理干净，无浮尘；3、刮腻子2-3遍，砂纸打磨平整；4、阴阳角顺直；5、清理原墙面浮灰，滚涂乳胶漆，乳胶漆甲方提供。" item_name="顶面处理" item_price="28" item_total="719.6" item_unit="㎡"/>
+</node3>
+<node3 budget="结算：1318.8" id="2" item_id="sgBill-主卧_5" name="主卧工程">
+<node4 item_amount="36.5" item_id="sgBill-主卧_5" item_method="1、含墙面批刮腻子；2、墙面清理干净，无浮尘；3、刮腻子2-3遍，砂纸打磨平整；4、阴阳角顺直；5、清理原墙面浮灰，滚涂乳胶漆，乳胶漆甲方提供。" item_name="墙面乳胶漆处理" item_price="28" item_total="1022" item_unit="㎡"/>
+<node4 item_amount="10.6" item_id="sgBill-主卧_5" item_method="1、含墙面批刮腻子；2、墙面清理干净，无浮尘；3、刮腻子2-3遍，砂纸打磨平整；4、阴阳角顺直；5、清理原墙面浮灰，滚涂乳胶漆，乳胶漆甲方提供。" item_name="顶面处理" item_price="28" item_total="296.8" item_unit="㎡"/>
+</node3>
+<node3 budget="结算：1164.8" id="3" item_id="sgBill-主卧" name="主卧工程">
+<node4 item_amount="32.6" item_id="sgBill-主卧" item_method="1、含墙面批刮腻子；2、墙面清理干净，无浮尘；3、刮腻子2-3遍，砂纸打磨平整；4、阴阳角顺直；5、清理原墙面浮灰，滚涂乳胶漆，乳胶漆甲方提供。" item_name="墙面乳胶漆处理" item_price="28" item_total="912.8" item_unit="㎡"/>
+<node4 item_amount="9" item_id="sgBill-主卧" item_method="1、含墙面批刮腻子；2、墙面清理干净，无浮尘；3、刮腻子2-3遍，砂纸打磨平整；4、阴阳角顺直；5、清理原墙面浮灰，滚涂乳胶漆，乳胶漆甲方提供。" item_name="顶面处理" item_price="28" item_total="252" item_unit="㎡"/>
+</node3>
+<node3 budget="结算：1578.6" id="4" item_id="sgBill-厨房" name="厨房工程">
+<node4 item_amount="4.1" item_id="sgBill-厨房" item_method="1、清理基层，扫除浮灰，洒水润湿；2、预排、放样，水泥砂浆铺贴；3、不含踢脚板安装、不含特殊基层处理、瓷砖规格：大于等于600mm小于等于800mm" item_name="铺地砖" item_price="50" item_total="205" item_unit="㎡"/>
+<node4 item_amount="23.2" item_id="sgBill-厨房" item_method="1、瓷砖充分泡水，取出阴干；2、清理基层，扫除浮灰、洒水润湿；3、预排、放样、水泥砂浆铺贴；4、不含踢脚线安装、不含特殊基层处理、瓷砖规格：大于等于300mm小于等于600mm。" item_name="贴墙面砖" item_price="48" item_total="1113.6" item_unit="㎡"/>
+<node4 item_amount="1" item_id="sgBill-厨房" item_method="采用轻质砖，水泥细砂浆，含单面抹灰。" item_name="包立管" item_price="260" item_total="260" item_unit="根"/>
+</node3>
+<node3 budget="结算：2254.4" id="5" item_id="sgBill-卫生间" name="卫生间工程">
+<node4 item_amount="3.6" item_id="sgBill-卫生间" item_method="1、清理基层，扫除浮灰，洒水润湿；2、预排、放样，水泥砂浆铺贴；3、不含踢脚板安装、不含特殊基层处理、瓷砖规格：大于等于600mm小于等于800mm" item_name="铺地砖" item_price="50" item_total="180" item_unit="㎡"/>
+<node4 item_amount="20.8" item_id="sgBill-卫生间" item_method="1、瓷砖充分泡水，取出阴干；2、清理基层，扫除浮灰、洒水润湿；3、预排、放样、水泥砂浆铺贴；4、不含踢脚线安装、不含特殊基层处理、瓷砖规格：大于等于300mm小于等于600mm。" item_name="贴墙面砖" item_price="48" item_total="998.4" item_unit="㎡"/>
+<node4 item_amount="13.6" item_id="sgBill-卫生间" item_method="1、如果作业面基层平整度较差，表面疏松，必须做基层界面处理；2、清理基层，无浮灰，涂刷防水涂料2遍，第二遍涂刷方向与第一遍涂刷方向垂直；3、卫生间涂刷高度从地面上返1800mm，厨房涂刷高度从地面上返300mm；4、防水涂刷完全干透后，地面蓄水，墙面淋水做24小时闭水实验；5、按实际涂刷面积计算工程量。（防水品牌：东方雨虹）" item_name="防水工程" item_price="60" item_total="816" item_unit="㎡"/>
+<node4 item_amount="1" item_id="sgBill-卫生间" item_method="采用轻质砖，水泥细砂浆，含单面抹灰。" item_name="包立管" item_price="260" item_total="260" item_unit="根"/>
+</node3>
+<node3 budget="结算：1331.4" id="6" item_id="sgBill-其他" name="其他工程">
+<node4 item_amount="3.9" item_id="sgBill-其他" item_method="1、清理基层，扫除浮灰，洒水润湿；2、预排、放样，水泥砂浆铺贴；3、不含踢脚板安装、不含特殊基层处理、瓷砖规格：大于等于600mm小于等于800mm" item_name="铺地砖" item_price="50" item_total="195" item_unit="㎡"/>
+<node4 item_amount="21.4" item_id="sgBill-其他" item_method="1、瓷砖充分泡水，取出阴干；2、清理基层，扫除浮灰、洒水润湿；3、预排、放样、水泥砂浆铺贴；4、不含踢脚线安装、不含特殊基层处理、瓷砖规格：大于等于300mm小于等于600mm。" item_name="贴墙面砖" item_price="48" item_total="1027.2" item_unit="㎡"/>
+<node4 item_amount="3.9" item_id="sgBill-其他" item_method="1、含墙面批刮腻子；2、墙面清理干净，无浮尘；3、刮腻子2-3遍，砂纸打磨平整；4、阴阳角顺直；5、清理原墙面浮灰，滚涂乳胶漆，乳胶漆甲方提供。" item_name="顶面处理" item_price="28" item_total="109.2" item_unit="㎡"/>
+</node3>
+<node3 budget="结算：(实测后结算)" id="7" item_id="sgBill-水电及其安装与杂项其他" name="*水电及其安装与杂项其他">
+<node4 item_amount="1" item_id="sgBill-水电及其安装与杂项其他" item_method="1、固定吊顶木龙骨（轻钢龙骨）做骨架，规范安装配件；2、封石膏板，自攻丝固定，外漏螺帽使用防锈漆点凃；3、石膏板缝批八字缝并使用嵌缝石膏填补，并贴绷带做防开裂处理；4、拐角处使用整板套割，不拼接，不开裂；5、大面积吊顶使用轻钢龙骨，小面积吊顶使用木龙骨。（石膏板品牌：泰山）" item_name="吊顶施工" item_price="130" item_total="130" item_unit="㎡"/>
+<node4 item_amount="1" item_id="sgBill-水电及其安装与杂项其他" item_method="明管45元/m；暗管55元/m；1、确定终端位置，弹线布管，管道走向横平竖直；2、管道安装支架固定，支架间距0.8-1m，固定牢固；3、管道焊接操作规范，稳定合适；4、管道安装完毕，注水，确保无堵塞；5、使用打压机，打压机维持6-8mpa，30分钟，管道接头无渗漏，压降不超过0.5mpa；6、工程施工完毕由监理验收合格后才能进行后续施工。 （水管品牌：伟星/鸽牌)" item_name="水改造" item_price="50" item_total="50" item_unit="m"/>
+<node4 item_amount="1" item_id="sgBill-水电及其安装与杂项其他" item_method="明线35元/m；暗线45元/m；1、确定终端位置，弹线布管，管道走向横平竖直；2、管道安装支架固定，支架间距0.8-1m，固定牢固；3、管道连接使用规格相同直接、弯头等连接件；4、线管弯曲使用弯簧，月亮弯，严禁损毁线管；5、电线穿线规范，不同电压、不同用途电线严禁同管，管道内无接头；6、厨卫电器单独回路；7、工程施工完毕由监理验收合格后才能进行后续施工。（线管品牌：伟星/鸽牌，电线品牌：海燕/鸽牌)" item_name="电改造" item_price="30" item_total="30" item_unit="m"/>
+<node4 item_amount="1" item_id="sgBill-水电及其安装与杂项其他" item_method="人工费及辅料（不包含空开关及电箱）。" item_name="强弱电箱安装" item_price="260" item_total="260" item_unit="个"/>
+<node4 item_amount="1" item_id="sgBill-水电及其安装与杂项其他" item_method="包含厨房面盆、面镜、浴缸、马桶（蹲厕）的整体安装费用。" item_name="全房洁具安装" item_price="300" item_total="300" item_unit="间"/>
+<node4 item_amount="1" item_id="sgBill-水电及其安装与杂项其他" item_method="人工费。" item_name="材料搬运" item_price="150" item_total="150" item_unit="层"/>
+<node4 item_amount="1" item_id="sgBill-水电及其安装与杂项其他" item_method="由施工现场装袋清理至小区指定垃圾堆放处（如需外运另结算）。" item_name="垃圾清运" item_price="100" item_total="100" item_unit="层"/>
+</node3>
+<node3 budget="(温馨提示:此项为家装公司增项内容，请咨询该装修公司)" id="8" item_id="sgBill-自定义" name="家装公司自定义工程"/>
+<node3 budget="10142.8 元" id="8" item_id="" name="家装基础施工报价合计"/>
+</node2>
+<node2 name="家装基础建材预算">
+<node3 budget="结算：17129.8" id="9" item_id="yzBill-客厅" name="客厅工程">
+<node4 item_address="点击查看" item_amount="25.7" item_brand="圣象安德森" item_code="AP8815" item_id="yzBill-客厅" item_name="圣象安德森康涅狄格橡木AP8815木地板" item_price="399" item_total="10254.3" item_unit="㎡"/>
+<node4 item_address="点击查看" item_amount="63.4" item_brand="多乐士" item_code="A757" item_id="yzBill-客厅" item_name="多乐士五合一无添加底漆" item_price="178" item_total="根据实际用量" item_unit="桶"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="啄木鸟世家" item_code="YKE-803" item_id="yzBill-客厅" item_name="啄木鸟世家-YKE-803-木门" item_price="5540" item_total="5540" item_unit="个"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="欧佩克门窗" item_code="B116" item_id="yzBill-客厅" item_name="欧佩克门窗1.6厚90系列-B116-推拉门" item_price="1319" item_total="1319" item_unit="个"/>
+<node4 item_address="无" item_amount="3" item_brand="西门子" item_code="单开开关" item_id="yzBill-客厅" item_name="灵犀-开关" item_price="5.5" item_total="16.5" item_unit="个"/>
+</node3>
+<node3 budget="结算：8469.4" id="10" item_id="yzBill-主卧_5" name="主卧工程">
+<node4 item_address="点击查看" item_amount="10.6" item_brand="圣象安德森" item_code="AP8815" item_id="yzBill-主卧_5" item_name="圣象安德森康涅狄格橡木AP8815木地板" item_price="399" item_total="4229.4" item_unit="㎡"/>
+<node4 item_address="点击查看" item_amount="36.5" item_brand="多乐士" item_code="A757" item_id="yzBill-主卧_5" item_name="多乐士五合一无添加底漆" item_price="178" item_total="根据实际用量" item_unit="桶"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="啄木鸟世家" item_code="YKE-601" item_id="yzBill-主卧_5" item_name="啄木鸟世家-YKE-601-木门" item_price="4240" item_total="4240" item_unit="个"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="厂家直供（订制）" item_code="0" item_id="yzBill-主卧_5" item_name="* 窗户 户外" item_price="面议" item_total="面议" item_unit="个"/>
+</node3>
+<node3 budget="结算：7831" id="11" item_id="yzBill-主卧" name="主卧工程">
+<node4 item_address="点击查看" item_amount="9" item_brand="圣象安德森" item_code="AP8815" item_id="yzBill-主卧" item_name="圣象安德森康涅狄格橡木AP8815木地板" item_price="399" item_total="3591" item_unit="㎡"/>
+<node4 item_address="点击查看" item_amount="32.6" item_brand="多乐士" item_code="A757" item_id="yzBill-主卧" item_name="多乐士五合一无添加底漆" item_price="178" item_total="根据实际用量" item_unit="桶"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="啄木鸟世家" item_code="YKE-601" item_id="yzBill-主卧" item_name="啄木鸟世家-YKE-601-木门" item_price="4240" item_total="4240" item_unit="个"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="厂家直供（订制）" item_code="0" item_id="yzBill-主卧" item_name="* 窗户 户外" item_price="面议" item_total="面议" item_unit="个"/>
+</node3>
+<node3 budget="结算：3595.5" id="12" item_id="yzBill-厨房" name="厨房工程">
+<node4 item_address="点击查看" item_amount="4.1" item_brand="东鹏瓷砖" item_code="LN30502" item_id="yzBill-厨房" item_name="东鹏瓷砖-LN30502-果园" item_price="151" item_total="619.1" item_unit="㎡"/>
+<node4 item_address="点击查看" item_amount="23.2" item_brand="萨米特陶瓷" item_code="43561" item_id="yzBill-厨房" item_name="萨米特陶瓷-简约，欧式-43561-陶瓷" item_price="87" item_total="2018.4" item_unit="㎡"/>
+<node4 item_address="点击查看" item_amount="4.1" item_brand="法狮龙" item_code="LD308（A）" item_id="yzBill-厨房" item_name="* 法狮龙时尚吊顶-律动系列-LD308（A）-复古演绎" item_price="479" item_total="1963.9" item_unit="㎡"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="欧佩克门窗" item_code="B7155" item_id="yzBill-厨房" item_name="欧佩克门窗金钻系列单包平开-B7155-卫生间门" item_price="958" item_total="958" item_unit="个"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="七彩门窗" item_code="0" item_id="yzBill-厨房" item_name="* 布妮思曼百叶窗" item_price="66" item_total="66" item_unit="个"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="帅丰集成灶" item_code="FU2-3B-90T2" item_id="yzBill-厨房" item_name="* 帅丰集成灶FU2-3B-90T2集成灶" item_price="11220" item_total="11220" item_unit="个"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="宇曼橱柜" item_code="无" item_id="yzBill-厨房" item_name="* 宇曼橱柜吊柜4" item_price="689" item_total="689" item_unit="延米"/>
+</node3>
+<node3 budget="结算：6715.8" id="13" item_id="yzBill-卫生间" name="卫生间工程">
+<node4 item_address="点击查看" item_amount="3.6" item_brand="山东骏程陶瓷" item_code="6702" item_id="yzBill-卫生间" item_name="瓷砖" item_price="20" item_total="72" item_unit="㎡"/>
+<node4 item_address="点击查看" item_amount="20.8" item_brand="例外瓷砖" item_code="K6103" item_id="yzBill-卫生间" item_name="例外瓷砖石尚魅影K6103地砖" item_price="136" item_total="2828.8" item_unit="㎡"/>
+<node4 item_address="点击查看" item_amount="0.5" item_brand="声达石膏" item_code="dd203" item_id="yzBill-卫生间" item_name="* 声达石膏dd203吊顶" item_price="38" item_total="19" item_unit="㎡"/>
+<node4 item_address="点击查看" item_amount="3.1" item_brand="法狮龙" item_code="CY302" item_id="yzBill-卫生间" item_name="* 法狮龙时尚吊顶-粹印系列-CY302-田园之旅" item_price="359" item_total="1112.9" item_unit="㎡"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="凯美森木门" item_code="PK-002" item_id="yzBill-卫生间" item_name="凯美森木门PK-002钛镁合金门" item_price="850" item_total="850" item_unit="个"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="厂家直供（订制）" item_code="0" item_id="yzBill-卫生间" item_name="* 窗户 户外" item_price="面议" item_total="面议" item_unit="个"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="欧路莎卫浴" item_code="OLS-7512" item_id="yzBill-卫生间" item_name="欧路莎卫浴OLS-7512花洒" item_price="1199" item_total="1199" item_unit="个"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="欧美尔卫浴" item_code="1011" item_id="yzBill-卫生间" item_name="欧美尔卫浴1011马桶" item_price="1766" item_total="1766" item_unit="个"/>
+</node3>
+<node3 budget="结算：2450.7" id="14" item_id="yzBill-其他" name="其他工程">
+<node4 item_address="点击查看" item_amount="3.9" item_brand="东鹏瓷砖" item_code="LN30502" item_id="yzBill-其他" item_name="东鹏瓷砖-LN30502-果园" item_price="151" item_total="588.9" item_unit="㎡"/>
+<node4 item_address="点击查看" item_amount="21.4" item_brand="萨米特陶瓷" item_code="43561" item_id="yzBill-其他" item_name="萨米特陶瓷-简约，欧式-43561-陶瓷" item_price="87" item_total="1861.8" item_unit="㎡"/>
+</node3>
+<node3 budget="46192.2 元" id="14" item_id="" name="家装基础硬装报价合计"/>
+</node2>
+<node2 name="家装基础家居预算">
+<node3 budget="结算：61975" id="15" item_id="rzBill-客厅" name="客厅">
+<node4 item_address="无" item_amount="2" item_brand="幸福亿家" item_category="家具" item_code="YP-BJ-6-01" item_id="rzBill-客厅" item_name="边几" item_price="1000" item_total="2000"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="全友卫浴" item_category="家具" item_code="QY-L9096" item_id="rzBill-客厅" item_name="卫生间储物柜" item_price="1980" item_total="1980"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="大立华家具" item_category="家具" item_code="118-1" item_id="rzBill-客厅" item_name="双人沙发" item_price="9314" item_total="9314"/>
+<node4 item_address="点击查看" item_amount="2" item_brand="大立华家具" item_category="家具" item_code="118-1" item_id="rzBill-客厅" item_name="单人沙发" item_price="4657" item_total="9314"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="大立华家具" item_category="家具" item_code="118-5" item_id="rzBill-客厅" item_name="餐桌" item_price="5390" item_total="5390"/>
+<node4 item_address="点击查看" item_amount="4" item_brand="大立华家具" item_category="家具" item_code="118-2" item_id="rzBill-客厅" item_name="餐椅" item_price="1540" item_total="6160"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="大立华家具" item_category="家具" item_code="118-2" item_id="rzBill-客厅" item_name="茶几" item_price="4290" item_total="4290"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="明清风韵" item_category="家具" item_code="3046" item_id="rzBill-客厅" item_name="电视柜" item_price="9060" item_total="9060"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="TCL电视" item_category="家电" item_code="D32A810" item_id="rzBill-客厅" item_name="电视" item_price="1699" item_total="1699"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="大金空调" item_category="家电" item_code="FVXG250NC-WN" item_id="rzBill-客厅" item_name="立柜式空调" item_price="10780" item_total="10780"/>
+<node4 item_address="无" item_amount="1" item_brand="古御堂" item_category="灯饰" item_code="8145" item_id="rzBill-客厅" item_name="吊灯" item_price="97" item_total="97"/>
+<node4 item_address="无" item_amount="1" item_brand="古御堂" item_category="灯饰" item_code="3015" item_id="rzBill-客厅" item_name="吊灯" item_price="297" item_total="297"/>
+<node4 item_address="点击查看" item_amount="2" item_brand="艾尚美台灯" item_category="灯饰" item_code="MT-1032" item_id="rzBill-客厅" item_name="台灯" item_price="128" item_total="256"/>
+<node4 item_address="点击查看" item_amount="2" item_brand="飞鹿体验" item_category="灯饰" item_code="1" item_id="rzBill-客厅" item_name="壁灯" item_price="面议" item_total="面议"/>
+<node4 item_address="无" item_amount="10" item_brand="飞利浦" item_category="灯饰" item_code="0" item_id="rzBill-客厅" item_name="筒灯" item_price="34" item_total="340"/>
+<node4 item_address="点击查看" item_amount="0.1" item_brand="飞鹿体验" item_category="定制" item_code="常规" item_id="rzBill-客厅" item_name="背景墙" item_price="面议" item_total="面议"/>
+<node4 item_address="点击查看" item_amount="0.1" item_brand="飞鹿体验" item_category="定制" item_code="" item_id="rzBill-客厅" item_name="背景墙" item_price="面议" item_total="面议"/>
+<node4 item_address="点击查看" item_amount="0.1" item_brand="厂家直供（订制）" item_category="定制" item_code="无" item_id="rzBill-客厅" item_name="背景墙" item_price="面议" item_total="面议"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="丽家家居" item_category="布艺" item_code="无" item_id="rzBill-客厅" item_name="地毯" item_price="557" item_total="557"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="飞鹿体验" item_category="饰品" item_code="无" item_id="rzBill-客厅" item_name="摆件" item_price="面议" item_total="面议"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="飞鹿体验" item_category="饰品" item_code="常规" item_id="rzBill-客厅" item_name="食品" item_price="面议" item_total="面议"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="飞鹿体验" item_category="饰品" item_code="无" item_id="rzBill-客厅" item_name="相框" item_price="面议" item_total="面议"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="飞鹿体验" item_category="饰品" item_code="无" item_id="rzBill-客厅" item_name="摆件" item_price="面议" item_total="面议"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="景德镇陶瓷" item_category="饰品" item_code="JT103" item_id="rzBill-客厅" item_name="摆件" item_price="115" item_total="115"/>
+<node4 item_address="点击查看" item_amount="2" item_brand="飞鹿体验" item_category="饰品" item_code="无" item_id="rzBill-客厅" item_name="盆景" item_price="面议" item_total="面议"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="达微利时尚生活" item_category="饰品" item_code="无" item_id="rzBill-客厅" item_name="摆件" item_price="24" item_total="24"/>
+<node4 item_address="点击查看" item_amount="2" item_brand="达微利时尚生活" item_category="饰品" item_code="无" item_id="rzBill-客厅" item_name="壁画" item_price="61" item_total="122"/>
+<node4 item_address="点击查看" item_amount="4" item_brand="景德镇陶瓷" item_category="厨卫" item_code="无" item_id="rzBill-客厅" item_name="餐具" item_price="45" item_total="180"/>
+</node3>
+<node3 budget="结算：32540" id="16" item_id="rzBill-主卧_5" name="主卧">
+<node4 item_address="点击查看" item_amount="2" item_brand="厂家直供（订制）" item_category="家具" item_code="无" item_id="rzBill-主卧_5" item_name="床头柜" item_price="550" item_total="1100"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="香田床垫" item_category="家具" item_code="MXS-4-R10" item_id="rzBill-主卧_5" item_name="双人床" item_price="20251" item_total="20251"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="亿尚家居" item_category="家具" item_code="欧式造型" item_id="rzBill-主卧_5" item_name="衣柜" item_price="1580" item_total="1580"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="TCL电视" item_category="家电" item_code="无" item_id="rzBill-主卧_5" item_name="电视" item_price="7499" item_total="7499"/>
+<node4 item_address="无" item_amount="1" item_brand="古御堂" item_category="灯饰" item_code="2015" item_id="rzBill-主卧_5" item_name="吊灯" item_price="426" item_total="426"/>
+<node4 item_address="点击查看" item_amount="8" item_brand="欧普照明" item_category="灯饰" item_code="无" item_id="rzBill-主卧_5" item_name="筒灯" item_price="183" item_total="1464"/>
+<node4 item_address="点击查看" item_amount="0.1" item_brand="久久家具" item_category="定制" item_code="无" item_id="rzBill-主卧_5" item_name="背景墙" item_price="面议" item_total="面议"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="丽家家居" item_category="布艺" item_code="无" item_id="rzBill-主卧_5" item_name="地毯" item_price="155" item_total="155"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="恋尚帘" item_category="布艺" item_code="无" item_id="rzBill-主卧_5" item_name="整体窗帘" item_price="65" item_total="65"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="飞鹿体验" item_category="饰品" item_code="无" item_id="rzBill-主卧_5" item_name="盆景" item_price="面议" item_total="面议"/>
+</node3>
+<node3 budget="结算：15071" id="17" item_id="rzBill-主卧" name="主卧">
+<node4 item_address="点击查看" item_amount="1" item_brand="福乐家居" item_category="家具" item_code="V46" item_id="rzBill-主卧" item_name="双人床" item_price="7130" item_total="7130"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="亿尚家居" item_category="家具" item_code="平板釉面" item_id="rzBill-主卧" item_name="衣柜" item_price="795" item_total="795"/>
+<node4 item_address="点击查看" item_amount="2" item_brand="厂家直供（订制）" item_category="家具" item_code="无" item_id="rzBill-主卧" item_name="床头柜" item_price="389" item_total="778"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="TCL电视" item_category="家电" item_code="无" item_id="rzBill-主卧" item_name="电视" item_price="3580" item_total="3580"/>
+<node4 item_address="无" item_amount="1" item_brand="古御堂" item_category="灯饰" item_code="2015" item_id="rzBill-主卧" item_name="吊灯" item_price="426" item_total="426"/>
+<node4 item_address="无" item_amount="2" item_brand="长裕" item_category="灯饰" item_code="CYT2023" item_id="rzBill-主卧" item_name="台灯" item_price="286" item_total="572"/>
+<node4 item_address="点击查看" item_amount="8" item_brand="欧普照明" item_category="灯饰" item_code="无" item_id="rzBill-主卧" item_name="筒灯" item_price="183" item_total="1464"/>
+<node4 item_address="点击查看" item_amount="0.1" item_brand="久久家具" item_category="定制" item_code="无" item_id="rzBill-主卧" item_name="背景墙" item_price="面议" item_total="面议"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="恋尚帘" item_category="布艺" item_code="MY-S09绣花布" item_id="rzBill-主卧" item_name="整体窗帘" item_price="98" item_total="98"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="丽家家居" item_category="布艺" item_code="棉丝毯" item_id="rzBill-主卧" item_name="地毯" item_price="39" item_total="39"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="蘑菇堡" item_category="饰品" item_code="无" item_id="rzBill-主卧" item_name="植物" item_price="189" item_total="189"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="飞鹿体验" item_category="饰品" item_code="" item_id="rzBill-主卧" item_name="壁画" item_price="面议" item_total="面议"/>
+</node3>
+<node3 budget="结算：363.2" id="18" item_id="rzBill-厨房" name="厨房">
+<node4 item_address="点击查看" item_amount="1" item_brand="美的" item_category="家电" item_code="0" item_id="rzBill-厨房" item_name="* 油烟机" item_price="1499" item_total="1499"/>
+<node4 item_address="无" item_amount="1" item_brand="飞利浦" item_category="灯饰" item_code="恒洁led吸顶灯" item_id="rzBill-厨房" item_name="吸顶灯" item_price="157" item_total="157"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="飞鹿体验" item_category="灯饰" item_code="1" item_id="rzBill-厨房" item_name="壁灯" item_price="面议" item_total="面议"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="厂家直供（订制）" item_category="饰品" item_code="无" item_id="rzBill-厨房" item_name="婴儿车" item_price="39" item_total="39"/>
+<node4 item_address="无" item_amount="1" item_brand="福美家水榭花乡绿植" item_category="饰品" item_code="无" item_id="rzBill-厨房" item_name="植物" item_price="167.2" item_total="167.2"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="飞鹿体验" item_category="厨卫" item_code="0" item_id="rzBill-厨房" item_name="厨具" item_price="面议" item_total="面议"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="飞鹿体验" item_category="厨卫" item_code="1" item_id="rzBill-厨房" item_name="厨具" item_price="面议" item_total="面议"/>
+</node3>
+<node3 budget="结算：538.8" id="19" item_id="rzBill-卫生间" name="卫生间">
+<node4 item_address="点击查看" item_amount="1" item_brand="飞鹿体验" item_category="灯饰" item_code="1" item_id="rzBill-卫生间" item_name="壁灯" item_price="面议" item_total="面议"/>
+<node4 item_address="无" item_amount="1" item_brand="飞利浦" item_category="灯饰" item_code="恒洁led吸顶灯" item_id="rzBill-卫生间" item_name="吸顶灯" item_price="157" item_total="157"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="中宇卫浴" item_category="装饰" item_code="JY21221" item_id="rzBill-卫生间" item_name="置物架" item_price="290" item_total="290"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="欧美卫浴" item_category="饰品" item_code="1" item_id="rzBill-卫生间" item_name="摆件" item_price="55" item_total="55"/>
+<node4 item_address="无" item_amount="1" item_brand="宜家家居" item_category="饰品" item_code="" item_id="rzBill-卫生间" item_name="垃圾桶" item_price="16.8" item_total="16.8"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="欧美卫浴" item_category="厨卫" item_code="无" item_id="rzBill-卫生间" item_name="卷纸器" item_price="20" item_total="20"/>
+</node3>
+<node3 budget="结算：4145" id="20" item_id="rzBill-其他" name="其他">
+<node4 item_address="无" item_amount="1" item_brand="艾尚实木" item_category="家具" item_code="JH02" item_id="rzBill-其他" item_name="装饰柜" item_price="1990" item_total="1990"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="美的" item_category="家电" item_code="MG70-1213EDS" item_id="rzBill-其他" item_name="洗衣机" item_price="1998" item_total="1998"/>
+<node4 item_address="无" item_amount="1" item_brand="飞利浦" item_category="灯饰" item_code="恒洁led吸顶灯" item_id="rzBill-其他" item_name="吸顶灯" item_price="157" item_total="157"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="飞鹿体验" item_category="灯饰" item_code="1" item_id="rzBill-其他" item_name="壁灯" item_price="面议" item_total="面议"/>
+</node3>
+<node3 budget="114633 元" id="20" item_id="" name="家装基础软装报价合计"/>
+</node2>
+</node1>
+</root>

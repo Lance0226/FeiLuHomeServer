@@ -26,7 +26,7 @@ import com.lance.datastructure.BudgetList;
 
 public class xmlUtil 
 {
-   public static void BuildXML(List<BudgetList> arrBudgetList,List<BudgetItemOne> arrBudgetItemOneList,List<BudgetItemTwo> arrBudgetItemTwoList,List<BudgetItemThree> arrBudgetItemThreeList)
+   public static void BuildXML(String xmlName,List<BudgetList> arrBudgetList,List<BudgetItemOne> arrBudgetItemOneList,List<BudgetItemTwo> arrBudgetItemTwoList,List<BudgetItemThree> arrBudgetItemThreeList)
    {
 	   String xmlStr=null;
 	   DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
@@ -174,7 +174,7 @@ public class xmlUtil
 
 	            //-------
 	            //save as file
-	            File file = new File("TelePhone.xml");
+	            File file = new File(xmlName+".xml");
 	            if(!file.exists()){
 	                file.createNewFile();
 	            }
