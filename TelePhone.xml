@@ -177,7 +177,7 @@
 </node3>
 <node3 budget="结算：246" id="24" item_id="rzBill-阳台_6" name="阳台">
 <node4 item_address="点击查看" item_amount="1" item_brand="爱优尚" item_category="饰品" item_code="无" item_id="rzBill-阳台_6" item_name="植物" item_price="78" item_total="78"/>
-<node4 item_address="点击查看" item_amount="1" item_brand="蘑菇堡" item_category="饰品" item_code="无" item_id="rzBill-阳台_6" item_name="植物" item_price="168" item_total="168"/>
+<node4 item_address="点击查看" item_amount="1" item_brand="蘑菇堡家居" item_category="饰品" item_code="无" item_id="rzBill-阳台_6" item_name="植物" item_price="168" item_total="168"/>
 </node3>
 <node3 budget="结算：290" id="25" item_id="rzBill-阳台" name="阳台">
 <node4 item_address="点击查看" item_amount="1" item_brand="爱优尚" item_category="饰品" item_code="无" item_id="rzBill-阳台" item_name="植物" item_price="78" item_total="78"/>
