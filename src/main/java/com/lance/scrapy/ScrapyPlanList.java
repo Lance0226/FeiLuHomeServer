@@ -41,16 +41,30 @@ public class ScrapyPlanList
    
    public void parse() throws SQLException, IOException
    {
-	   Elements elms1=doc.select("a[class=project-meta]");
+	  parseDetailURL();  //解析子项目页面url
+	  parsePreviewURL(); //解析预览图
+	  parseDetailPage();
+	   
+   }
+
+  
+  
+  private void parseDetailURL()  //解析子项目页面url
+  {
+	  Elements elms1=doc.select("a[class=project-meta]");
 
 	    for(Element elm1:elms1)
 	   {
 		   String strDetailURL=elm1.attr("href");
-		   this.detail_urlList.add(this.urlPrefix+turnDetailUrlToNormal(strDetailURL));
+		   this.detail_urlList.add(this.urlPrefix+turnDetailUrlToNormal(strDetailURL));  //预算详细页面的url
+		   //System.out.println(this.urlPrefix+turnDetailUrlToNormal(strDetailURL));  //打印url
 		 
 	   }
-	    
-	   Elements elms2=doc.select("img[class=BWfade fadein]");
+  }
+  
+  public void parsePreviewURL()  //解析预览图
+  {
+	  Elements elms2=doc.select("img[class=BWfade fadein]");
 	   
 	   for(Element elm2:elms2)
 	   {
@@ -58,30 +72,37 @@ public class ScrapyPlanList
 		   this.preview_urlList.add(this.urlPrefix+strPreviewURL);
 		   //System.out.println(this.urlPrefix+strPreviewURL);
 	   }
-	   
-	   if(this.preview_urlList.size()==this.detail_urlList.size())
+  }
+  
+  public void parseDetailPage() throws IOException //解析详细页
+, SQLException
+  {
+	  if(this.preview_urlList.size()==this.detail_urlList.size())
 	   {
 		   for(int i=0;i<this.detail_urlList.size();i++)
 		   {
-			   ScrapyBudgetList budgetList=new ScrapyBudgetList(this.detail_urlList.get(i));
-			   this.pano_urlList.add(budgetList.getPano());
 			   SpoloSQL server=new SpoloSQL();
-			   int id=server.getPlanFinalId();
-			   server.insertToPlanList(id,this.preview_urlList.get(i),this.detail_urlList.get(i),this.pano_urlList.get(i));
-			   List<BudgetList> arrBudgetList=budgetList.GetBudget(id);
-			   budgetList.parseBudgetItem();
-			   List<BudgetItemOne> arrBudgetItemOneList=budgetList.getItemListOne();
-			   List<BudgetItemTwo> arrBudgetItemTwoList=budgetList.getItemListTwo();
-			   List<BudgetItemThree> arrBudgetItemThreeList=budgetList.getItemListThree();
-			   xmlUtil.BuildXML("xml"+i,arrBudgetList,arrBudgetItemOneList,arrBudgetItemTwoList,arrBudgetItemThreeList);
+			   int plan_id=server.getPlanFinalId();
+			   ScrapyBudgetList budgetList=new ScrapyBudgetList(this.detail_urlList.get(i),plan_id);
+			   //this.pano_urlList.add(budgetList.getPano());
+			   //server.insertToPlanList(id,this.preview_urlList.get(i),this.detail_urlList.get(i),this.pano_urlList.get(i));
+			   List<BudgetList> arrBudgetList=budgetList.getArrayBuddgetList();  //获取第一级数据节点的数据结构列表
+			   
+			   //budgetList.parseBudgetItem();
+			   //List<BudgetItemOne> arrBudgetItemOneList=budgetList.getItemListOne();
+			   //List<BudgetItemTwo> arrBudgetItemTwoList=budgetList.getItemListTwo();
+			   //List<BudgetItemThree> arrBudgetItemThreeList=budgetList.getItemListThree();
+			   //xmlUtil.BuildXML("xml"+i,arrBudgetList,arrBudgetItemOneList,arrBudgetItemTwoList,arrBudgetItemThreeList);
+			   
 		   }
 	   }
-   }
-
+  }
+  
   private String turnDetailUrlToNormal(String detail_url)  //将跳转url转为直接跳转后，
   {
 	String new_detail_url="/rwrule/zxfazzjfb3"+detail_url.substring(10,detail_url.length());
 	return new_detail_url;
 	
   }
+
 }

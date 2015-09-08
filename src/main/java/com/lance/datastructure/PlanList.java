@@ -8,3 +8,5 @@ public class PlanList
   public String detail_url;
   public String pano_url;
 }
+
+

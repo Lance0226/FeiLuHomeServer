@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.lance.datastructure.BudgetCategoryType;
 import com.lance.datastructure.BudgetList;
 import com.lance.datastructure.PlanList;
 import com.mysql.jdbc.Statement;

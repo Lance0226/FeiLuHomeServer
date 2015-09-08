@@ -17,10 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 
-/**
- * Hello world!
- *
- */
+
 public class App 
 {
  
@@ -31,10 +28,10 @@ public class App
 
 	public static void main( String[] args ) throws IOException, SQLException
     {
-		//ScrapyPlanList planList=new ScrapyPlanList();
-		//planList.parse();
+		ScrapyPlanList planList=new ScrapyPlanList();
+		planList.parse();
 		
-		
+		/*
 		SpoloSQL spoloSql=new SpoloSQL();
 		List<PlanList> arrayPlanList=spoloSql.queryPlanList();
 		String strNamePlanlist=JsonUtil.PlanListToJson(arrayPlanList,PlanListType.NAME);
@@ -46,6 +43,6 @@ public class App
         io.writeToFile("plan_preview_url", "json","/usr/local/Cellar/tomcat/8.0.22/libexec/webapps/ROOT",strPreviewURLPlanlist);
         io.writeToFile("plan_detail_url", "json","/usr/local/Cellar/tomcat/8.0.22/libexec/webapps/ROOT",strDetailURLPlanlist);
 		io.writeToFile("plan_pano_url", "json","/usr/local/Cellar/tomcat/8.0.22/libexec/webapps/ROOT",strPanoURLPlanlist);
-	
+	    */
     }
 }

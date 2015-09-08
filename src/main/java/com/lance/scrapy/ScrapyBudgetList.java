@@ -27,32 +27,40 @@ public class ScrapyBudgetList
 {
   private              Map<String, String> projectInfo;
   private              Document            doc;
-  private              List<Elements>      listBudgets;
+  private              List<Elements>      listBudgetsElements;//子项目分类Elements列表
   private              JSONObject          spoloJson;
+  private              String              plan_id;          //查询的最后一条plan数据库id
   
   private              List<BudgetList>    arrBudgetList;
   
-  private              List<String>        listItemTag;
+  private              List<Elements>           listBudgetLvOneElements; //一级预算信息elements列表
+  private              List<String>           listCategoryAbr;  //子项目分类标签前缀字符串列表
+  private              List<String>           listItemTag;
   private              List<BudgetItemOne>    listBudgetItemOne;
   private              List<BudgetItemTwo>    listBudgetItemTwo;
   private              List<BudgetItemThree>  listBudgetItemThree;
   
   private static final String              urlPrefix="http://www.xuanran001.com";
 	
-  public ScrapyBudgetList(String strURL) throws IOException
+  public ScrapyBudgetList(String strURL,int plan_id) throws IOException
   {
 	  
 	  this.projectInfo=new HashMap<String, String>();
 	  
 	  doc=Jsoup.connect(strURL).timeout(100000).get();  //设置10秒超时
-	  this.listBudgets=new LinkedList<Elements>();
+	  this.listBudgetsElements=new LinkedList<Elements>();
 	  this.arrBudgetList=new LinkedList<BudgetList>();
 	  
+	  this.listCategoryAbr=new LinkedList<String>();//初始化子项目分类标签前缀字符串列表
+	  this.listBudgetLvOneElements=new LinkedList<Elements>();//初始化一级预算信息elements列表
 	  this.listItemTag=new LinkedList<String>();
 	  this.listBudgetItemOne=new LinkedList<BudgetItemOne>();
 	  this.listBudgetItemTwo=new LinkedList<BudgetItemTwo>();
 	  this.listBudgetItemThree=new LinkedList<BudgetItemThree>();
-	  GetBudgets();
+	  InitCategoryAbr();
+	  InitBudgetsElements();
+	  InitBudgetLvOneElements();
+	  InitBudgetList(plan_id);
   }
   
   public Map<String,String> GetProInfo()
@@ -116,103 +124,23 @@ public class ScrapyBudgetList
 	  
   }
   
-  public String getPano()
+  public String getPano()  //获取全景url
   {
 	  Elements panos=doc.select("div[data-swf~=(?i)\\.(swf)]");
 	  String pano_swf_url=panos.last().attr("data-swf");
       String pano_html5_url=this.urlPrefix+turnSwfToHtmlURL(pano_swf_url);
+      
+      System.out.println(pano_html5_url);
 	  
       return pano_html5_url; 
   }
-  
-  private void GetBudgets()
+
+  public List<BudgetList> getArrayBuddgetList()   //获取第一级数据节点的数据结构列表
   {
-	  Elements budgets1=doc.select("section[id=spolo-sgBill]");
-	  Elements budgets2=doc.select("section[id=spolo-yzBill]");
-	  Elements budgets3=doc.select("section[id=spolo-rzBill]");
-	  
-	  this.listBudgets.add(budgets1);
-	  this.listBudgets.add(budgets2);
-	  this.listBudgets.add(budgets3);
-	  
-  }
-
-  public List<BudgetList> GetBudget(int plan_id) throws SQLException
-  {   String category_abr=null;
-      int project_id=0;//子项目id
-     
-	  for(int i=0;i<3;i++)  //三部分循环抓取
-	  {
-		  
-
-		  switch (i) 
-		  {
-		    case 0:category_abr="sgBill";break;
-		    case 1:category_abr="yzBill";break;
-		    case 2:category_abr="rzBill";break;
-		    default:System.out.println("Index error");
-			break;
-		  }
-	  
-	  Elements subTitle0s=this.listBudgets.get(i).last().select("a[data-parent=#accordion-"+category_abr+"]");
-	  for(Element subTitle0:subTitle0s)
-	  {
-
-		  String itemTagTemp=subTitle0.attr("href");
-		  
-		  
-		  if(itemTagTemp!="")
-		  {
-			 project_id++;
-			 String itemTag=itemTagTemp.substring(1, itemTagTemp.length());//去掉＃
-			 this.listItemTag.add(itemTag);//添加标签
-		     String arr_str[]=subTitle0.text().split(" ");                         //获得工程名称
-		     String item_budget=null;
-		     String item_name=null;
-		  
-		     item_name=arr_str[0]; 
-		     item_budget=arr_str[1];
-		  
-		  
-		     BudgetList budget_list=new BudgetList();
-		     budget_list.plan_id=plan_id;
-		     budget_list.project_id=project_id+"";
-		     budget_list.item_id=itemTag;
-		     budget_list.category=i;
-		     budget_list.name=item_name;
-		     budget_list.budget=item_budget;
-		     this.arrBudgetList.add(budget_list);
-		  }
-		  else
-		  {   String arr_str[]=subTitle0.text().split("：");                         //获得工程名称
-		      String item_budget=null;
-		      String item_name=null;
-		      item_name=arr_str[0]; 
-			  item_budget=arr_str[1];
-		      
-			  BudgetList budget_list=new BudgetList();
-			  budget_list.plan_id=plan_id;
-			  budget_list.project_id=project_id+"";
-			  budget_list.item_id="";
-			  budget_list.category=i;
-			  budget_list.name=item_name;
-			  budget_list.budget=item_budget;
-			  this.arrBudgetList.add(budget_list);
-		  }
-	  }
-		  
-	
-	  }
-		  
-		  
-		 
-		
-		 
+	  System.out.println(this.arrBudgetList.get(0).name);
 	  return this.arrBudgetList;
-	 
-	  
-	  
   }
+  
   
   public void parseBudgetItem()
   {
@@ -326,6 +254,85 @@ public class ScrapyBudgetList
 	  return this.listBudgetItemThree;
   }
   
+  private void InitCategoryAbr() //将sgBill,yzBill,rzBill三个字符串放入全局队列，便于之后循环
+  {
+	  this.listCategoryAbr.add("sgBill");
+	  this.listCategoryAbr.add("yzBill");
+	  this.listCategoryAbr.add("rzBill");
+  }
+  
+  private void InitBudgetsElements()   //获取子页面sg,yz,rz三大分块的Elements
+  {
+	  for(int i=0;i<3;i++)
+	  {
+		  Elements budgets=doc.select("section[id=spolo-"+this.listCategoryAbr.get(i)+"]");
+		  this.listBudgetsElements.add(budgets);	  
+	  }
+	  
+  }
+  
+  private void InitBudgetLvOneElements()  //获取第一级预算信息Elements
+  {
+	  for (int i=0;i<3;i++)
+	  {
+		  Elements budgetLvOneElements=this.listBudgetsElements.get(i)
+				  .last().select("a[data-parent=#accordion-"+this.listCategoryAbr.get(i)+"]");
+		  this.listBudgetLvOneElements.add(budgetLvOneElements);
+		  
+	  }
+  }
+  
+  private void InitBudgetList(int plan_id) //生成一级子项标签列表，如yzBill阳台
+  {   int project_id=0;
+      int category=0;
+	  for(Elements budgetLvOneElements:this.listBudgetLvOneElements)
+      {
+		  category++;
+		  for(Element budgetLvOneElement:budgetLvOneElements)
+		  {
+			  String itemTagTemp=budgetLvOneElement.attr("href");
+			  if(itemTagTemp!="")
+			  {
+				  project_id=project_id+1;
+				  String item_id=itemTagTemp.substring(1, itemTagTemp.length());//去掉＃
+				  //System.out.println(item_id);
+				  this.listItemTag.add(item_id);//添加标签
+				  
+				  String arr_str[]=budgetLvOneElement.text().split(" ");                         //获得工程名称
+				  String item_budget=null;
+				  String item_name=null;
+				  item_name=arr_str[0]; 
+				  item_budget=arr_str[1];
+				  BudgetList budget_list=InitBudgetLvOneNode(plan_id, project_id+"",item_id, category, item_name, item_budget);
+				  this.arrBudgetList.add(budget_list);
+			  }
+			  else
+			  {
+				  String arr_str[]=budgetLvOneElement.text().split("：");                         //获得工程名称
+			      String item_budget=null;
+			      String item_name=null;
+			      item_name=arr_str[0]; 
+				  item_budget=arr_str[1];
+				  BudgetList budget_list=InitBudgetLvOneNode(plan_id, project_id+"","", category, item_name, item_budget);
+				  this.arrBudgetList.add(budget_list);
+			  }
+		  }
+      }
+	 
+  }
+  
+  private BudgetList InitBudgetLvOneNode(int plan_id,String project_id,String item_id, int category,String name,String budget)
+  {
+  	     BudgetList budget_list=new BudgetList();
+  	     budget_list.plan_id=plan_id;
+  	     budget_list.project_id=project_id;
+  	     budget_list.item_id=item_id;
+  	     budget_list.category=category;
+  	     budget_list.name=name;
+  	     budget_list.budget=budget;
+  	     return budget_list;
+  	     
+  }
   
   private String turnSwfToHtmlURL(String pano_swf_url)  //将swf的url转变为html5的
   {
