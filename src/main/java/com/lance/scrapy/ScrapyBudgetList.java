@@ -29,7 +29,7 @@ public class ScrapyBudgetList
   private              Document            doc;
   private              List<Elements>      listBudgetsElements;//子项目分类Elements列表
   private              JSONObject          spoloJson;
-  private              String              plan_id;          //查询的最后一条plan数据库id
+  private              int                 plan_id;          //查询的最后一条plan数据库id
   
   private              List<BudgetList>    arrBudgetList;
   
@@ -44,9 +44,9 @@ public class ScrapyBudgetList
 	
   public ScrapyBudgetList(String strURL,int plan_id) throws IOException
   {
-	  
+	  System.out.println(strURL);
 	  this.projectInfo=new HashMap<String, String>();
-	  
+	  this.plan_id=plan_id;
 	  doc=Jsoup.connect(strURL).timeout(100000).get();  //设置10秒超时
 	  this.listBudgetsElements=new LinkedList<Elements>();
 	  this.arrBudgetList=new LinkedList<BudgetList>();
@@ -57,10 +57,11 @@ public class ScrapyBudgetList
 	  this.listBudgetItemOne=new LinkedList<BudgetItemOne>();
 	  this.listBudgetItemTwo=new LinkedList<BudgetItemTwo>();
 	  this.listBudgetItemThree=new LinkedList<BudgetItemThree>();
-	  InitCategoryAbr();
-	  InitBudgetsElements();
-	  InitBudgetLvOneElements();
-	  InitBudgetList(plan_id);
+	  initCategoryAbr();
+	  initBudgetsElements();
+	  initBudgetLvOneElements();
+	  initBudgetList(plan_id);
+	  initBudgetItem();
   }
   
   public Map<String,String> GetProInfo()
@@ -137,17 +138,17 @@ public class ScrapyBudgetList
 
   public List<BudgetList> getArrayBuddgetList()   //获取第一级数据节点的数据结构列表
   {
-	  System.out.println(this.arrBudgetList.get(0).name);
+	  //System.out.println(this.arrBudgetList.get(0).name);
 	  return this.arrBudgetList;
   }
   
   
-  public void parseBudgetItem()
+  private void initBudgetItem()
   {
 	  for(String item:this.listItemTag)
 	  {
+		  //System.out.println(item);
 		  String category=item.substring(0,6);
-		  System.out.println(category);
 		  Element subItem_temp=this.doc.select("div[id="+item+"]").last().getElementsByTag("tbody").last();
 		  if(subItem_temp!=null)
 		  {
@@ -173,10 +174,11 @@ public class ScrapyBudgetList
 				    case 3:budgetItemOne.item_price=sub2Item.text();break;
 				    case 4:budgetItemOne.item_total=sub2Item.text();break;
 				    case 5:budgetItemOne.item_method=sub2Item.text();break;
-				    default:System.out.println("Index eror");break;
+				    default:/*System.out.println("Index eror");*/break;
 				  }
 			  }
 			  this.listBudgetItemOne.add(budgetItemOne);
+			  System.out.println(budgetItemOne.item_name);
 			  }
 			  else if(category.equals("yzBill"))
 			  {
@@ -196,7 +198,7 @@ public class ScrapyBudgetList
 					    case 5:budgetItemTwo.item_price=sub2Item.text();break;
 					    case 6:budgetItemTwo.item_total=sub2Item.text();break;
 					    case 7:budgetItemTwo.item_address=sub2Item.text();break;
-					    default:System.out.println("Index eror");break;
+					    default:/*System.out.println("Index eror");*/break;
 					  }
 				  } 
 				  this.listBudgetItemTwo.add(budgetItemTwo);
@@ -219,7 +221,7 @@ public class ScrapyBudgetList
 					    case 5:budgetItemThree.item_price=sub2Item.text();break;
 					    case 6:budgetItemThree.item_total=sub2Item.text();break;
 					    case 7:budgetItemThree.item_address=sub2Item.text();break;
-					    default:System.out.println("Index eror");break;
+					    default:/*System.out.println("Index eror");*/break;
 					  }
 				  } 
 				  this.listBudgetItemThree.add(budgetItemThree);
@@ -227,10 +229,7 @@ public class ScrapyBudgetList
 			  else
 			  {
 				  System.out.println("Category error");
-			  }
-			  
-			  
-			  
+			  }			  
 				  
 		  }
 		  }
@@ -241,6 +240,7 @@ public class ScrapyBudgetList
   
   public List<BudgetItemOne> getItemListOne()
   {
+	  System.out.println(this.listBudgetItemOne.get(0).item_name);
 	  return this.listBudgetItemOne;
   }
   
@@ -254,24 +254,25 @@ public class ScrapyBudgetList
 	  return this.listBudgetItemThree;
   }
   
-  private void InitCategoryAbr() //将sgBill,yzBill,rzBill三个字符串放入全局队列，便于之后循环
+  private void initCategoryAbr() //将sgBill,yzBill,rzBill三个字符串放入全局队列，便于之后循环
   {
 	  this.listCategoryAbr.add("sgBill");
 	  this.listCategoryAbr.add("yzBill");
 	  this.listCategoryAbr.add("rzBill");
   }
   
-  private void InitBudgetsElements()   //获取子页面sg,yz,rz三大分块的Elements
+  private void initBudgetsElements()   //获取子页面sg,yz,rz三大分块的Elements
   {
 	  for(int i=0;i<3;i++)
 	  {
 		  Elements budgets=doc.select("section[id=spolo-"+this.listCategoryAbr.get(i)+"]");
+		  //System.out.println(budgets.text());
 		  this.listBudgetsElements.add(budgets);	  
 	  }
 	  
   }
   
-  private void InitBudgetLvOneElements()  //获取第一级预算信息Elements
+  private void initBudgetLvOneElements()  //获取第一级预算信息Elements
   {
 	  for (int i=0;i<3;i++)
 	  {
@@ -282,7 +283,7 @@ public class ScrapyBudgetList
 	  }
   }
   
-  private void InitBudgetList(int plan_id) //生成一级子项标签列表，如yzBill阳台
+  private void initBudgetList(int plan_id) //生成一级子项标签列表，如yzBill阳台
   {   int project_id=0;
       int category=0;
 	  for(Elements budgetLvOneElements:this.listBudgetLvOneElements)
@@ -330,8 +331,7 @@ public class ScrapyBudgetList
   	     budget_list.category=category;
   	     budget_list.name=name;
   	     budget_list.budget=budget;
-  	     return budget_list;
-  	     
+  	     return budget_list;  	     
   }
   
   private String turnSwfToHtmlURL(String pano_swf_url)  //将swf的url转变为html5的

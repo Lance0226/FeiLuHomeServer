@@ -32,7 +32,7 @@ public class ScrapyPlanList
 	
    public ScrapyPlanList() throws IOException
    {
-	  this.doc=Jsoup.connect(this.urlPrefix+"/rwtarget/zhuangxiuapptubiao.html").timeout(50000).get();
+	  this.doc=Jsoup.connect(this.urlPrefix+"/rwrule/zhuangxiuapptubiao/size_2/2.html").timeout(50000).get();
 	  this.detail_urlList=new ArrayList<String>();
 	  this.preview_urlList=new ArrayList<String>();
 	  this.pano_urlList=new ArrayList<String>();
@@ -86,10 +86,9 @@ public class ScrapyPlanList
 			   ScrapyBudgetList budgetList=new ScrapyBudgetList(this.detail_urlList.get(i),plan_id);
 			   //this.pano_urlList.add(budgetList.getPano());
 			   //server.insertToPlanList(id,this.preview_urlList.get(i),this.detail_urlList.get(i),this.pano_urlList.get(i));
-			   List<BudgetList> arrBudgetList=budgetList.getArrayBuddgetList();  //获取第一级数据节点的数据结构列表
-			   
-			   //budgetList.parseBudgetItem();
-			   //List<BudgetItemOne> arrBudgetItemOneList=budgetList.getItemListOne();
+			   //List<BudgetList> arrBudgetList=budgetList.getArrayBuddgetList();  //获取第一级数据节点的数据结构列表
+
+			   List<BudgetItemOne> arrBudgetItemOneList=budgetList.getItemListOne();
 			   //List<BudgetItemTwo> arrBudgetItemTwoList=budgetList.getItemListTwo();
 			   //List<BudgetItemThree> arrBudgetItemThreeList=budgetList.getItemListThree();
 			   //xmlUtil.BuildXML("xml"+i,arrBudgetList,arrBudgetItemOneList,arrBudgetItemTwoList,arrBudgetItemThreeList);
