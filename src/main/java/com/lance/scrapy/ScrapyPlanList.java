@@ -84,13 +84,16 @@ public class ScrapyPlanList
 			   SpoloSQL server=new SpoloSQL();
 			   int plan_id=server.getPlanFinalId();
 			   ScrapyBudgetList budgetList=new ScrapyBudgetList(this.detail_urlList.get(i),plan_id);
+			   //budgetList.GetProInfo();
+			   budgetList.GetImg();
+			   
 			   //this.pano_urlList.add(budgetList.getPano());
 			   //server.insertToPlanList(id,this.preview_urlList.get(i),this.detail_urlList.get(i),this.pano_urlList.get(i));
 			   //List<BudgetList> arrBudgetList=budgetList.getArrayBuddgetList();  //获取第一级数据节点的数据结构列表
 
 			   List<BudgetItemOne> arrBudgetItemOneList=budgetList.getItemListOne();
-			   //List<BudgetItemTwo> arrBudgetItemTwoList=budgetList.getItemListTwo();
-			   //List<BudgetItemThree> arrBudgetItemThreeList=budgetList.getItemListThree();
+			   List<BudgetItemTwo> arrBudgetItemTwoList=budgetList.getItemListTwo();
+			   List<BudgetItemThree> arrBudgetItemThreeList=budgetList.getItemListThree();
 			   //xmlUtil.BuildXML("xml"+i,arrBudgetList,arrBudgetItemOneList,arrBudgetItemTwoList,arrBudgetItemThreeList);
 			   
 		   }

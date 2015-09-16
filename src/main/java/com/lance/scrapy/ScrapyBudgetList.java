@@ -44,7 +44,7 @@ public class ScrapyBudgetList
 	
   public ScrapyBudgetList(String strURL,int plan_id) throws IOException
   {
-	  System.out.println(strURL);
+	  //System.out.println(strURL);
 	  this.projectInfo=new HashMap<String, String>();
 	  this.plan_id=plan_id;
 	  doc=Jsoup.connect(strURL).timeout(100000).get();  //设置10秒超时
@@ -178,7 +178,6 @@ public class ScrapyBudgetList
 				  }
 			  }
 			  this.listBudgetItemOne.add(budgetItemOne);
-			  System.out.println(budgetItemOne.item_name);
 			  }
 			  else if(category.equals("yzBill"))
 			  {
@@ -240,7 +239,7 @@ public class ScrapyBudgetList
   
   public List<BudgetItemOne> getItemListOne()
   {
-	  System.out.println(this.listBudgetItemOne.get(0).item_name);
+	  //System.out.println(this.listBudgetItemOne.get(0).item_name);
 	  return this.listBudgetItemOne;
   }
   
